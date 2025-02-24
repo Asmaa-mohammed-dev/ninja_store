@@ -1,4 +1,4 @@
-class TTexts {
+class NTexts {
   static const String onBoardingTitle1 = "أختر منتجك \nمنتجك الرائع في انتظارك";
   static const String onBoardingTitle2 =
       "أختر طريقة الدفع \n المناسبة لك ولبلدك ";

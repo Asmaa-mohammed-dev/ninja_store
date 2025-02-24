@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:ninja_store/features/authentication/screens/onboarding.dart';
 import 'package:ninja_store/utils/theme/theme.dart';
 
 //To do : Add widgets bindings
@@ -12,9 +14,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: NAppTheme.lightTheme,
+      home: const OnBoardingScreen(),
     );
   }
 }
