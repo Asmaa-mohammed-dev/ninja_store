@@ -6,9 +6,12 @@ class NImages {
   static const String google = 'assets/images/google.png';
   static const String facebook = 'assets/images/facebook.png';
   // --OnBoarding Images
-  static const String onBoardingImage1 = 'assets/images/1-1.png';
-  static const String onBoardingImage2 = 'assets/images/1.jpg';
-  static const String onBoardingImage3 = 'assets/images/4.jpg';
+  static const String onBoardingImage1 =
+      'assets/images/on_boarding_screen/1-1.png';
+  static const String onBoardingImage2 =
+      'assets/images/on_boarding_screen/1-3.png';
+  static const String onBoardingImage3 =
+      'assets/images/on_boarding_screen/4.jpg';
   // --Animation Images
   static const String productsIllustration = 'assets/images/6.png';
   static const String productSaleIllustration = 'assets/images/7.jpg';
