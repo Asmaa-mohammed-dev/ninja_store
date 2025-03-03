@@ -92,11 +92,12 @@ flutter:
         - asset: assets/fonts/ARIALUNI.ttf
         - asset: assets/fonts/ariblk.ttf
         - asset: assets/fonts/ARLRDBD.TTF
-        - asset: assets/fonts/majalla.ttf
         - asset: assets/fonts/PTBLDDSK.TTF
         - asset: assets/fonts/STENCIL.TTF
         - asset: assets/fonts/StencilStd.otf
-
+    - family: MAJALLAB
+      fonts:
+        - asset: assets/MAJALLAB.ttf
  
   
   
