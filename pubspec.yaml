@@ -97,7 +97,7 @@ flutter:
         - asset: assets/fonts/StencilStd.otf
     - family: MAJALLAB
       fonts:
-        - asset: assets/MAJALLAB.ttf
+        - asset: assets/fonts/majalla.ttf
  
   
   
