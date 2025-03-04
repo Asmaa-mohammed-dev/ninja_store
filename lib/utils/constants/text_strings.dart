@@ -35,7 +35,7 @@ class NTexts {
   static const String privacyPolicy = "سياسة الخصوصية";
   static const String termsOfUse = "شروط الاستخدام";
   static const String vertificationCode = "كود التأكيد";
-  static const String resendEmail = "إعادة إرسال البريد الإلكتروني";
+  static const String resendEmail = "إعادة إرسال  ";
 
   //Authentication Heading Text
   static const String homeAppbarTitle = "يوم جيد للتسوق";

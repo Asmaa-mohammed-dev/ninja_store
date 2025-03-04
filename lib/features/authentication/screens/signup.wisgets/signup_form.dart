@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ninja_store/features/authentication/screens/signup.wisgets/terms_conditions_checkbox.dart';
+import 'package:ninja_store/features/authentication/screens/signup.wisgets/verify_email.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/my_button.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
@@ -107,57 +110,11 @@ class NSignUpForm extends StatelessWidget {
             child: MyButton(
               colors: NColors.primary,
               title: NTexts.createAccount,
-              onPressed: () {},
+              onPressed: () => Get.to(() => const VerifyEmailScreen()),
             ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class NTermsAndConditionCheckbox extends StatelessWidget {
-  const NTermsAndConditionCheckbox({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(
-          width: 24,
-          height: 24,
-          child: Checkbox(value: true, onChanged: (value) {}),
-        ),
-        SizedBox(height: NSizes.spaceBtwItems),
-        Text.rich(
-          TextSpan(
-            children: [
-              TextSpan(
-                text: '${NTexts.isAgreeTo}',
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              TextSpan(
-                text: '${NTexts.privacyPolicy} ',
-                style: Theme.of(context).textTheme.bodyMedium!.apply(
-                  color: NColors.primary,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-              TextSpan(
-                text: '${NTexts.and} ',
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              TextSpan(
-                text: '${NTexts.termsOfUse} ',
-                style: Theme.of(context).textTheme.bodyMedium!.apply(
-                  color: NColors.primary,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
