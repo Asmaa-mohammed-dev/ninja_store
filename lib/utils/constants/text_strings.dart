@@ -43,7 +43,7 @@ class NTexts {
   static const String loginTitle = "أهلًا بك،";
   // static const String loginSubTitle = "أستكشف خيارات لا محدودة";
   static const String signUpTitle = "هيا لننشيء حسابك";
-  static const String forgetPasswordTitle = "أنسى كلمة السر";
+  static const String forgetPasswordTitle = "نسيت كلمة السر";
   static const String forgetPasswordSubTitle =
       "ضع إيميلك لإعادة تعيين كلمة السر";
   static const String resetPasswordTitle = "إعادة تعيين كلمة السر";

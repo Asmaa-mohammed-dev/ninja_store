@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ninja_store/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:ninja_store/features/authentication/screens/signup.wisgets/signup.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/my_button.dart';
@@ -53,7 +54,7 @@ class NLoginForm extends StatelessWidget {
                   ],
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Get.to(() => const ForgetPassword()),
                   child: const Text(
                     NTexts.forgetPassword,
                     style: TextStyle(fontSize: 20),
