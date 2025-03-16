@@ -1,6 +1,7 @@
 class NImages {
   // --App Logos
   static const String lightAppLogo = 'assets/logos/12.png';
+  static const String appLogo = 'assets/logos/18.PNG';
 
   // --Social Logos
   static const String google = 'assets/images/google.png';
@@ -15,7 +16,7 @@ class NImages {
   // --Animation Images
   static const String productsIllustration = 'assets/images/6.png';
   static const String productSaleIllustration = 'assets/images/7.jpg';
-  static const String staticSuccessIllustration = 'assets/images/6.png';
-  static const String deliveredEmailIllustration = 'assets/images/6.png';
-  static const String verifyIllustration = 'assets/images/6.png';
+  static const String staticSuccessIllustration = 'assets/images/7.jpg';
+  static const String deliveredEmailIllustration = 'assets/images/6.jpg';
+  static const String verifyIllustration = 'assets/images/6.jpg';
 }
