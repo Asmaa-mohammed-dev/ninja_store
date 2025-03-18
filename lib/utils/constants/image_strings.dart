@@ -19,4 +19,5 @@ class NImages {
   static const String staticSuccessIllustration = 'assets/images/7.jpg';
   static const String deliveredEmailIllustration = 'assets/images/6.jpg';
   static const String verifyIllustration = 'assets/images/6.jpg';
+  static const String meatIcon = 'assets/icons/categories/24.png';
 }
