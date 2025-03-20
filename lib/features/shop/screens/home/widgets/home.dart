@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/containers/curved%20_edges/primary_header_container.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/containers/curved%20_edges/search_container.dart';
-import 'package:ninja_store/common/widgets/image_text_widgets/vertical_image_text.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/widgets/home_appbar.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/widgets/home_categories.dart';
+import 'package:ninja_store/features/shop/screens/home/widgets/widgets/promo_slider.dart';
+import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
@@ -25,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                   NHomeAppBar(),
                   SizedBox(height: NSizes.spaceBtwSections),
                   //searchbar
-                  NSearchContainer(text: 'أبحث عن ............'),
+                  NSearchContainer(text: 'أبحث عن ............', onTap: () {}),
                   //heading
                   SizedBox(height: NSizes.spaceBtwSections),
                   Padding(
@@ -35,6 +36,7 @@ class HomeScreen extends StatelessWidget {
                         NsectionHeading(
                           title: 'التصنيفات',
                           showActionButton: false,
+                          textColor: NColors.white,
                         ),
                         SizedBox(height: NSizes.spaceBtwSections),
                         //categories
@@ -42,6 +44,17 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                ],
+              ),
+            ),
+            //Home
+            Padding(
+              padding: const EdgeInsets.all(NSizes.defaultSpace),
+              child: NpromoSider(
+                banners: [
+                  NImages.prombanner1,
+                  NImages.prombanner2,
+                  NImages.prombanner3,
                 ],
               ),
             ),

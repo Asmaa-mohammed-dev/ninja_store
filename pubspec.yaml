@@ -38,6 +38,8 @@ dependencies:
   url_launcher: ^6.0.9
   flutter_native_splash: ^2.4.5
   smooth_page_indicator: ^1.2.0+3
+  carousel_slider: ^5.0.0
+
 
   #STATE MANAGEMENT
   get: ^4.3.8
@@ -64,6 +66,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/banners/
+
     - assets/images/on_boarding_screen/
     - assets/icons/
     - assets/icons/categories/

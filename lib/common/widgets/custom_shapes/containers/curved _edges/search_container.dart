@@ -16,7 +16,6 @@ class NSearchContainer extends StatelessWidget {
 
   final String text;
   final VoidCallback? onTap;
-
   final IconData? icon;
   final bool showBackground, showBorder;
 
