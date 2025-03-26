@@ -21,7 +21,7 @@ class NColors {
   static const Color textWhite = Colors.white;
 
   ///background Colors
-  static const Color light = Color(0xFF333333);
+  static const Color light = Color.fromARGB(255, 235, 235, 235);
   static const Color dark = Color(0xFF272727);
   static const Color primaryBackground = Color(0xFFF3F5FF);
 
