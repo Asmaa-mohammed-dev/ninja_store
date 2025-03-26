@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/containers/curved%20_edges/primary_header_container.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/containers/curved%20_edges/search_container.dart';
+import 'package:ninja_store/common/widgets/layouts/grid_layout.dart';
+import 'package:ninja_store/common/widgets/products/product_card_vertical.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/widgets/home_appbar.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/widgets/home_categories.dart';
@@ -50,11 +52,22 @@ class HomeScreen extends StatelessWidget {
             //Home
             Padding(
               padding: const EdgeInsets.all(NSizes.defaultSpace),
-              child: NpromoSider(
-                banners: [
-                  NImages.prombanner1,
-                  NImages.prombanner2,
-                  NImages.prombanner3,
+              child: Column(
+                children: [
+                  NpromoSider(
+                    banners: [
+                      NImages.prombanner1,
+                      NImages.prombanner2,
+                      NImages.prombanner3,
+                    ],
+                  ),
+                  SizedBox(height: NSizes.spaceBtwSections),
+
+                  //popular products
+                  NGridLayout(
+                    itemCount: 2,
+                    itemBuilder: (_, index) => NProductCardVertical(),
+                  ),
                 ],
               ),
             ),
