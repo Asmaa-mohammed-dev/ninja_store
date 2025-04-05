@@ -26,6 +26,11 @@ class NImages {
   static const String prombanner3 = 'assets/images/banners/29.png';
   // -- product
   static const String productImage1 = 'assets/images/products/alsafi-1.png';
+  static const String productImage2 = 'assets/images/products/product25.png';
+
+  static const String productImage3 = 'assets/images/products/product26.png';
+  static const String productImage4 = 'assets/images/products/product27.png';
+
   // -- product logo
   static const String Almarai = 'assets/images/products/almarai.png';
 }
