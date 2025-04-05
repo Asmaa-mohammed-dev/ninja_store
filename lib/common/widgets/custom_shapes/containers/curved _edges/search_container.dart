@@ -11,20 +11,22 @@ class NSearchContainer extends StatelessWidget {
     this.icon = Iconsax.search_normal,
     this.showBackground = true,
     this.showBorder = true,
-    required this.onTap,
+    this.onTap,
+    this.padding = const EdgeInsets.symmetric(horizontal: NSizes.defaultSpace),
   });
 
   final String text;
   final VoidCallback? onTap;
   final IconData? icon;
   final bool showBackground, showBorder;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: NSizes.defaultSpace),
+        padding: padding,
         child: Container(
           width: NDeviceUtils.getScreenWidth(context),
           padding: const EdgeInsets.all(NSizes.md),

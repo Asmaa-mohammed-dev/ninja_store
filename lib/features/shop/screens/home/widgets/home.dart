@@ -62,6 +62,8 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: NSizes.spaceBtwSections),
+                  NsectionHeading(title: 'الأطعمة الرائجة', onPressed: () {}),
+                  SizedBox(height: NSizes.spaceBtwItems),
 
                   //popular products
                   NGridLayout(
