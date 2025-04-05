@@ -20,7 +20,7 @@ class NTermsAndConditionCheckbox extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(
-                text: '${NTexts.isAgreeTo}',
+                text: NTexts.isAgreeTo,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               TextSpan(

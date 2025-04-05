@@ -24,6 +24,7 @@ class NHelperFunctions {
     } else if (value == 'purple') {
       return Colors.purple;
     }
+    return null;
   }
 
   static void showSnackBar(String message) {
