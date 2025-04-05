@@ -8,19 +8,19 @@ class NCircularImage extends StatelessWidget {
     this.width = 56,
     this.height = 56,
     this.border,
-    required this.backgroundColor,
+    this.backgroundColor,
     this.fit = BoxFit.cover,
-    required this.isNetworkImage,
+    this.isNetworkImage = false,
     this.padding = NSizes.sm,
-    required this.overlayColor,
+    this.overlayColor,
     required this.image,
   });
 
   final double width, height, padding;
   final String image;
   final BoxBorder? border;
-  final Color overlayColor;
-  final Color backgroundColor;
+  final Color? overlayColor;
+  final Color? backgroundColor;
   final BoxFit? fit;
   final bool isNetworkImage;
   @override

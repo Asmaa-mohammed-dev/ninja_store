@@ -12,10 +12,7 @@ class NPrimaryHeaderContainer extends StatelessWidget {
       child: Container(
         color: NColors.primary,
         padding: const EdgeInsets.all(0),
-        child: SizedBox(
-          height: 400,
-          child: Stack(children: [SizedBox(width: 500, height: 400), child]),
-        ),
+        child: SizedBox(child: Stack(children: [child])),
       ),
     );
   }
