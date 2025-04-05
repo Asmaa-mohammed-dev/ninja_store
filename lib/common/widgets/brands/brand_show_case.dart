@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/rounded_container.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/n_brand_card.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
-import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
 class NBrandSowcase extends StatelessWidget {

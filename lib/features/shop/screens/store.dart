@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ninja_store/common/widgets/appbar/appbar.dart';
-import 'package:ninja_store/common/widgets/brands/brand_show_case.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/appbar/appbar.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/cart_menu_icon/cart_menu_icon.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/containers/curved%20_edges/search_container.dart';
-import 'package:ninja_store/common/widgets/custom_shapes/rounded_container.dart';
-import 'package:ninja_store/common/widgets/images/n_circular_image.dart';
 import 'package:ninja_store/common/widgets/layouts/grid_layout.dart';
-import 'package:ninja_store/common/widgets/texts/n_brand_title_text_with_verified_icon.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
 import 'package:ninja_store/features/shop/screens/home/store/widgets/category_tab.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/n_brand_card.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
-import 'package:ninja_store/utils/constants/enums.dart';
-import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
 class StoreScreen extends StatelessWidget {
