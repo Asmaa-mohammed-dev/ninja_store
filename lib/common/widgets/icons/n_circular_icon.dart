@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 

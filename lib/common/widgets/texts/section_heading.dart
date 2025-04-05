@@ -4,9 +4,9 @@ class NsectionHeading extends StatelessWidget {
   const NsectionHeading({
     super.key,
     this.textColor,
-    this.showActionButton = false,
+    this.showActionButton = true,
     required this.title,
-    this.buttonTitle = 'أظهار الكل',
+    this.buttonTitle = "إظهار الكل",
     this.onPressed,
   });
   final Color? textColor;
@@ -17,6 +17,7 @@ class NsectionHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           title,
@@ -30,7 +31,18 @@ class NsectionHeading extends StatelessWidget {
           ),
         ),
         if (showActionButton)
-          TextButton(onPressed: onPressed, child: Text(buttonTitle)),
+          TextButton(
+            onPressed: onPressed,
+            child: Text(
+              buttonTitle,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontFamily: 'MAJALLA',
+                fontSize: 15,
+                color: textColor,
+              ),
+            ),
+          ),
       ],
     );
   }

@@ -4,6 +4,7 @@ import 'package:ninja_store/common/styles/shadows.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/rounded_container.dart';
 import 'package:ninja_store/common/widgets/icons/n_circular_icon.dart';
 import 'package:ninja_store/common/widgets/images/n_rounde_image.dart';
+import 'package:ninja_store/common/widgets/texts/n_brand_title_text_with_verified_icon.dart';
 import 'package:ninja_store/common/widgets/texts/product_price.dart';
 import 'package:ninja_store/common/widgets/texts/product_title_text.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
@@ -81,52 +82,35 @@ class NProductCardVertical extends StatelessWidget {
                 children: [
                   NProductTitleText(title: 'قشطة صافي', smallSize: true),
                   const SizedBox(height: NSizes.spaceBtwItems / 2),
-                  Row(
-                    children: [
-                      Text(
-                        'صافي',
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'MAJALLA',
-                          fontSize: 18,
-                        ),
-                      ),
-                      const SizedBox(width: NSizes.xs),
-                      const Icon(
-                        Iconsax.verify5,
-                        color: NColors.primary,
-                        size: NSizes.iconXs,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //Price
-                      NProductPrice(price: '35.0'),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: NColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(NSizes.cardRadiusMd),
-                            bottomLeft: Radius.circular(
-                              NSizes.productImageRadius,
-                            ),
-                          ),
-                        ),
-                        child: SizedBox(
-                          width: NSizes.iconLg * 1.2,
-                          height: NSizes.iconLg * 1.2,
-
-                          child: const Icon(Iconsax.add, color: NColors.white),
-                        ),
-                      ),
-                    ],
-                  ),
+                  NBransTitleWithVerifiedIcon(title: 'صافي'),
                 ],
               ),
+            ),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                //Price
+                Padding(
+                  padding: const EdgeInsets.only(right: NSizes.sm),
+                  child: NProductPrice(price: '35.0'),
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: NColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(NSizes.cardRadiusMd),
+                      bottomLeft: Radius.circular(NSizes.productImageRadius),
+                    ),
+                  ),
+                  child: SizedBox(
+                    width: NSizes.iconLg * 1.2,
+                    height: NSizes.iconLg * 1.2,
+
+                    child: const Icon(Iconsax.add, color: NColors.white),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
