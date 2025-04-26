@@ -37,6 +37,8 @@ class NRoundedImage extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
+          border: border,
+          color: backgroundColor,
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: ClipRRect(

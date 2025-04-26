@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ninja_store/common/styles/shadows.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/rounded_container.dart';
@@ -7,6 +8,7 @@ import 'package:ninja_store/common/widgets/images/n_rounde_image.dart';
 import 'package:ninja_store/common/widgets/texts/n_brand_title_text_with_verified_icon.dart';
 import 'package:ninja_store/common/widgets/texts/product_price.dart';
 import 'package:ninja_store/common/widgets/texts/product_title_text.dart';
+import 'package:ninja_store/features/shop/product_details/product_detail.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
@@ -17,7 +19,7 @@ class NProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => const ProductDetail()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
