@@ -5,7 +5,8 @@ import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
 
 class NUserProfileTitle extends StatelessWidget {
-  const NUserProfileTitle({super.key});
+  const NUserProfileTitle({super.key, required this.onPressed});
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class NUserProfileTitle extends StatelessWidget {
         ),
       ),
       trailing: IconButton(
-        onPressed: () {},
+        onPressed: onPressed,
         icon: const Icon(Iconsax.edit, color: NColors.white),
       ),
     );
