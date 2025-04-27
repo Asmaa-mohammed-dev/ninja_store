@@ -17,9 +17,9 @@ class NHelperFunctions {
       return Colors.black;
     } else if (value == 'white') {
       return Colors.white;
-    } else if (value == 'Grey') {
+    } else if (value == 'grey') {
       return Colors.grey;
-    } else if (value == 'Pink') {
+    } else if (value == 'pink') {
       return Colors.pink;
     } else if (value == 'purple') {
       return Colors.purple;

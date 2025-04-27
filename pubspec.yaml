@@ -45,6 +45,10 @@ dependencies:
   get: ^4.3.8
   get_storage: ^2.0.3
 
+  #Product Specific
+  readmore: ^3.0.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
