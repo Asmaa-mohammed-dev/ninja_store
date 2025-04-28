@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
 import 'package:ninja_store/features/shop/product_details/widgets/bottom_add_to_cart_widget.dart';
@@ -7,6 +8,7 @@ import 'package:ninja_store/features/shop/product_details/widgets/n_product_attr
 import 'package:ninja_store/features/shop/product_details/widgets/product_detail_image_slider.dart';
 import 'package:ninja_store/features/shop/product_details/widgets/product_meta_data.dart';
 import 'package:ninja_store/features/shop/product_details/widgets/rating_share_widget.dart';
+import 'package:ninja_store/features/shop/product_reviews/product_review.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 import 'package:readmore/readmore.dart';
 
@@ -93,7 +95,8 @@ class ProductDetail extends StatelessWidget {
                               180, // 180 درجة (لازم نحولها لراديان)
                           child: IconButton(
                             icon: const Icon(Iconsax.arrow_right_3),
-                            onPressed: () {},
+                            onPressed:
+                                () => Get.to(() => const ProductReviewScreen()),
                           ),
                         ),
                       ],
