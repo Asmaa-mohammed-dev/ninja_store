@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:iconsax/iconsax.dart';
+
 import 'package:ninja_store/common/widgets/custom_shapes/appbar/appbar.dart';
 import 'package:ninja_store/common/widgets/products/ratings/rating_indicator.dart';
 import 'package:ninja_store/features/shop/product_reviews/widgets/n_overall_product_rating.dart';
 import 'package:ninja_store/features/shop/product_reviews/widgets/user_review_card.dart';
-import 'package:ninja_store/utils/constants/colors.dart';
 
 import 'package:ninja_store/utils/constants/sizes.dart';
 

@@ -35,4 +35,6 @@ class NImages {
   static const String Almarai = 'assets/images/products/almarai.png';
   // -- product logo
   static const String user = 'assets/images/users/man.png';
+  // -- Payment methods
+  static const String paypal = 'assets/images/payment_methods/paypal.png';
 }
