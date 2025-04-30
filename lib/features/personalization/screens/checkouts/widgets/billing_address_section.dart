@@ -12,7 +12,7 @@ class NBillingAddressSection extends StatelessWidget {
       children: [
         NsectionHeading(
           title: 'مكان الشحن',
-          buttonTitle: 'تغير',
+          buttonTitle: 'تغيير',
           onPressed: () {},
         ),
         Text(
