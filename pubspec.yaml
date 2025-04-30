@@ -45,6 +45,12 @@ dependencies:
   get: ^4.3.8
   get_storage: ^2.0.3
 
+  #Product Specific
+  readmore: ^3.0.0
+
+  flutter_rating_bar: ^4.0.1
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -70,6 +76,7 @@ flutter:
     - assets/images/products/
 
     - assets/images/on_boarding_screen/
+    - assets/images/payment_methods/
     - assets/icons/
     - assets/icons/categories/
     - assets/images/users/

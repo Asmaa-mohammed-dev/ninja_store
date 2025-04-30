@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ninja_store/common/widgets/image_text_widgets/vertical_image_text.dart';
+import 'package:ninja_store/features/shop/screens/sub_category/sub_categories.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
 
 class NHomeCategories extends StatelessWidget {
@@ -17,7 +19,7 @@ class NHomeCategories extends StatelessWidget {
           return NVerticalImageText(
             image: NImages.meatIcon,
             title: 'لحوم',
-            onTap: () {},
+            onTap: () => Get.to(() => const SubCategoriesScreen()),
           );
         },
       ),

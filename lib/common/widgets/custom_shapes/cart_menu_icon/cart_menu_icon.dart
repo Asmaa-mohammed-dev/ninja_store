@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ninja_store/features/personalization/screens/cart/cart.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 
 class NCartCountericon extends StatelessWidget {
@@ -16,7 +18,7 @@ class NCartCountericon extends StatelessWidget {
     return Stack(
       children: [
         IconButton(
-          onPressed: onPressed,
+          onPressed: () => Get.to(() => CartScreen()),
           icon: Icon(Iconsax.shopping_bag, color: iconColor),
         ),
         Positioned(
