@@ -39,7 +39,6 @@ class SubCategoriesScreen extends StatelessWidget {
                 SizedBox(height: NSizes.spaceBtwItems / 2),
                 SizedBox(
                   height: 130,
-
                   child: ListView.separated(
                     itemCount: 4,
                     scrollDirection: Axis.horizontal,

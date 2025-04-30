@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/containers/curved%20_edges/primary_header_container.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/containers/curved%20_edges/search_container.dart';
 import 'package:ninja_store/common/widgets/layouts/grid_layout.dart';
 import 'package:ninja_store/common/widgets/products/product_card_vertical.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
+import 'package:ninja_store/features/shop/screens/all_products/all_products.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/widgets/home_appbar.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/widgets/home_categories.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/widgets/promo_slider.dart';
@@ -63,7 +65,10 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: NSizes.spaceBtwSections),
-                  NsectionHeading(title: 'الأطعمة الرائجة', onPressed: () {}),
+                  NsectionHeading(
+                    title: 'الأطعمة الرائجة',
+                    onPressed: () => Get.to(() => const AllProducts()),
+                  ),
                   SizedBox(height: NSizes.spaceBtwItems),
 
                   //popular products
