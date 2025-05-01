@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "263726532845",
+    "project_id": "ncommerceapp",
+    "storage_bucket": "ncommerceapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263726532845:android:833ebf63cb989f5ff164e4",
+        "android_client_info": {
+          "package_name": "com.example.ninja_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263726532845-fdv5ef40irrn6kss9pvm9mr02407rpaj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ninja_store",
+            "certificate_hash": "f90ef4366aea8521ff85058a405cd6e80f34275d"
+          }
+        },
+        {
+          "client_id": "263726532845-1k348002puq5v6dlau4b893bn6urq06h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO5Juc9H4sxzyJvReDCvDARbZAYT2zPeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263726532845-1k348002puq5v6dlau4b893bn6urq06h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "263726532845-5ah5dlbg6nk5ifpff9053inpbgi78fkc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ninjaStore"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

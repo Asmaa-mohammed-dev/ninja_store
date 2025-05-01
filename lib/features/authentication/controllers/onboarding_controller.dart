@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:ninja_store/features/authentication/screens/login/login.dart';
 
 class OnBoardingController extends GetxController {
@@ -21,6 +23,20 @@ class OnBoardingController extends GetxController {
 
   void nextPage() {
     if (currentPageIndex.value == 2) {
+      final storage = GetStorage();
+
+      if (kDebugMode) {
+        print('========Get Storage Next Button========');
+        print(storage.read('IsFirstTime'));
+      }
+
+      storage.write('IsFirstTime', false);
+
+      if (kDebugMode) {
+        print('========Get Storage Next Button========');
+        print(storage.read('IsFirstTime'));
+      }
+
       Get.offAll(const LoginScreen());
     } else {
       int page = currentPageIndex.value + 1;
@@ -32,10 +48,11 @@ class OnBoardingController extends GetxController {
 
   void skipPage() {
     currentPageIndex.value = 2;
-    pageController.animateToPage(
-      2,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
+    // pageController.animateToPage(
+    //   2,
+    //   duration: const Duration(milliseconds: 500),
+    //   curve: Curves.easeInOut,
+    // );
+    pageController.jumpToPage(2);
   }
 }

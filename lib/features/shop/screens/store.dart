@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ninja_store/common/widgets/appbar/appbar.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/appbar/appbar.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/cart_menu_icon/cart_menu_icon.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/containers/curved%20_edges/search_container.dart';
 import 'package:ninja_store/common/widgets/layouts/grid_layout.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
+import 'package:ninja_store/features/shop/screens/brands/all_brands.dart';
 import 'package:ninja_store/features/shop/screens/home/store/widgets/category_tab.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/n_brand_card.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
@@ -58,7 +60,7 @@ class StoreScreen extends StatelessWidget {
                       //Featured Brands
                       NsectionHeading(
                         title: 'العلامات الرائجة',
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => const AllBrandsScreen()),
                       ),
                       SizedBox(height: NSizes.spaceBtwSections / 1.5),
                       NGridLayout(
