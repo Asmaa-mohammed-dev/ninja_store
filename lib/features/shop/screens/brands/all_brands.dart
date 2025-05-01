@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/appbar/appbar.dart';
 import 'package:ninja_store/common/widgets/layouts/grid_layout.dart';
-import 'package:ninja_store/common/widgets/products/sortable/n_sortable_product.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
 import 'package:ninja_store/features/shop/screens/brands/brand_product.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/n_brand_card.dart';

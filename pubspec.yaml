@@ -43,7 +43,7 @@ dependencies:
 
   #STATE MANAGEMENT
   get: ^4.3.8
-  get_storage: ^2.0.3
+  get_storage: ^2.1.1
 
   #Product Specific
   readmore: ^3.0.0
