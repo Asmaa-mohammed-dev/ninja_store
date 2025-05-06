@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ninja_store/data/repositories.authentication/authentication/authentication_repositories.dart';
-import 'package:ninja_store/data/repositories.authentication/user/user.model.dart';
-import 'package:ninja_store/data/repositories.authentication/user/user.repository.dart';
+import 'package:ninja_store/data/repositories_authentication/authentication/authentication_repositories.dart';
+import 'package:ninja_store/data/repositories_authentication/user/user.model.dart';
+import 'package:ninja_store/data/repositories_authentication/user/user.repository.dart';
 import 'package:ninja_store/features/authentication/screens/signup.wisgets/verify_email.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/internet/network_manager.dart';
@@ -89,7 +89,7 @@ class SignupController extends GetxController {
       );
 
       ///Move to Verify Email Screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch (e) {
       ///Show soome Generic Error to the user
       NFullScreenLoader.stopLoading();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:ninja_store/common/styles/spacing_styles.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/my_button.dart';
@@ -25,7 +26,11 @@ class SucessScreen extends StatelessWidget {
           child: Column(
             children: [
               ///Image
-              Image(image: AssetImage(image)),
+              Lottie.asset(
+                image,
+                width: MediaQuery.of(context).size.width * 0.6,
+              ),
+
               SizedBox(height: NSizes.spaceBtwSections),
 
               ///Title & SubTitle

@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:ninja_store/data/repositories.authentication/authentication/n_firebase_auth_exception.dart';
+import 'package:ninja_store/data/repositories_authentication/authentication/n_firebase_auth_exception.dart';
 import 'package:flutter/services.dart';
-import 'package:ninja_store/data/repositories.authentication/user/user.model.dart';
+import 'package:ninja_store/data/repositories_authentication/user/user.model.dart';
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();

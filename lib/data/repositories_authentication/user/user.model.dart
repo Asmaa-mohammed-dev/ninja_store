@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ninja_store/data/repositories.authentication/authentication/n_firebase_auth_exception.dart';
+import 'package:ninja_store/data/repositories_authentication/authentication/n_firebase_auth_exception.dart';
 import 'package:ninja_store/utils/formatters/formatter.dart';
 
 class UserModel {

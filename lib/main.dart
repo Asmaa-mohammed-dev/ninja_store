@@ -4,7 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ninja_store/app.dart';
-import 'package:ninja_store/data/repositories.authentication/authentication/authentication_repositories.dart';
+import 'package:ninja_store/data/repositories_authentication/authentication/authentication_repositories.dart';
 import 'package:ninja_store/firebase_options.dart';
 
 // Entry point of flutter app
