@@ -105,17 +105,29 @@ class NSignUpForm extends StatelessWidget {
           SizedBox(height: NSizes.spaceBtwInputFields),
 
           ///Password
-          TextFormField(
-            controller: controller.password,
-            obscureText: true,
-            validator: (value) => TValidator.validatePassword(value),
-            decoration: InputDecoration(
-              labelText: NTexts.password,
-              hintText: NTexts.password,
-              labelStyle: TextStyle(fontSize: 20),
-              hintStyle: TextStyle(fontSize: 20),
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash),
+          Obx(
+            () => TextFormField(
+              controller: controller.password,
+              obscureText: controller.hidePassword.value,
+              validator: (value) => TValidator.validatePassword(value),
+              decoration: InputDecoration(
+                labelText: NTexts.password,
+                hintText: NTexts.password,
+                labelStyle: TextStyle(fontSize: 20),
+                hintStyle: TextStyle(fontSize: 20),
+                prefixIcon: Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  onPressed:
+                      () =>
+                          controller.hidePassword.value =
+                              !controller.hidePassword.value,
+                  icon: Icon(
+                    controller.hidePassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye,
+                  ),
+                ),
+              ),
             ),
           ),
           const SizedBox(height: NSizes.spaceBtwInputFields),

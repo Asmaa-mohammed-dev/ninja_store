@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:ninja_store/bindings/general_bindings.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/theme/theme.dart';
 
@@ -20,6 +21,7 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.system,
         theme: NAppTheme.lightTheme,
+        initialBinding: GeneralBindings(),
         home: const Scaffold(
           backgroundColor: NColors.primary,
           body: Center(child: CircularProgressIndicator(color: Colors.white)),

@@ -2,7 +2,7 @@ class TValidator {
   // Empty Text Validation
   static String? validateEmptyText(String? fieldName, String? value) {
     if (value == null || value.isEmpty) {
-      return '$fieldName برجاء ادخال';
+      return ' برجاء ادخال $fieldName';
     }
     return null;
   }
