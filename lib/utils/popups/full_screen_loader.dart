@@ -27,7 +27,8 @@ class NFullScreenLoader {
                   child: SingleChildScrollView(
                     child: NAnimationLoaderWidget(
                       text: text,
-                      animation: 'assets/animation/loading.json',
+                      animation: animation,
+                      // 'assets/animation/loading.json'
                     ),
                   ),
                 ),
