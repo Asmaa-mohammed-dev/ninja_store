@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ninja_store/data/repositories_authentication/authentication/authentication_repositories.dart';
+import 'package:ninja_store/features/personalization/controllers/user_controller.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/internet/network_manager.dart';
 import 'package:ninja_store/utils/popups/full_screen_loader.dart';
@@ -15,6 +16,8 @@ class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  final userController = Get.put(UserController());
+
   @override
   void onInit() {
     email.text = localStorage.read('REMEMBER_ME_EMAIL') ?? '';
@@ -64,6 +67,41 @@ class LoginController extends GetxController {
       ///Redirect
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
+      NFullScreenLoader.stopLoading();
+      NLoaders.errorSnackBar(title: 'حدث خطأ', message: e.toString());
+    }
+  }
+
+  ///google sign in authentication
+  Future<void> googleSignIn() async {
+    try {
+      ///Start Loading
+      NFullScreenLoader.openLoadingDialog(
+        'تسجيل الدخول ....',
+        NImages.docerAnimation,
+      );
+
+      ///Check Internet Connectivity
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        NFullScreenLoader.stopLoading();
+        return;
+      }
+
+      ///Google Authentication
+      final userCredentials =
+          await AuthenticationRepository.instance.signInWithGoogle();
+
+      ///Save Your record
+      await userController.saveUserRecord(userCredentials);
+
+      ///Remove Loader
+      NFullScreenLoader.stopLoading();
+
+      ///Remove Loader
+      AuthenticationRepository.instance.screenRedirect();
+    } catch (e) {
+      ///Remove Loader
       NFullScreenLoader.stopLoading();
       NLoaders.errorSnackBar(title: 'حدث خطأ', message: e.toString());
     }

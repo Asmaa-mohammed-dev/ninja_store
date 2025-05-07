@@ -25,7 +25,7 @@ class NetworkManager extends GetxController {
     final result = results.first;
     _connectionStatus.value = result;
     if (_connectionStatus.value == ConnectivityResult.none) {
-      NLoaders.warningSnackBar(title: 'لا يوجد اتصال بالأنترنت');
+      NLoaders.customToast(message: 'لا يوجد اتصال بالأنترنت');
     }
   }
 

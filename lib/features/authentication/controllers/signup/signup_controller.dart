@@ -78,7 +78,7 @@ class SignupController extends GetxController {
         profilePicture: '',
       );
       final userRepository = Get.put(UserRepository());
-      await userRepository.saveUserData(newUser);
+      await userRepository.saveUserRecord(newUser);
 
       NFullScreenLoader.stopLoading();
 
