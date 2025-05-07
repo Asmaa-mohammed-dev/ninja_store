@@ -39,4 +39,8 @@ class NImages {
   static const String user = 'assets/images/users/man.png';
   // -- Payment methods
   static const String paypal = 'assets/images/payment_methods/paypal.png';
+  // -- Lottie
+  static const String successfullyRegisterAnimation =
+      'assets/animation/register.json';
+  static const String docerAnimation = 'assets/animation/docer.json';
 }

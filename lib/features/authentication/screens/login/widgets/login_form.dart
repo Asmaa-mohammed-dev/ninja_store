@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ninja_store/features/authentication/controllers/login/login_controller.dart';
 import 'package:ninja_store/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:ninja_store/features/authentication/screens/signup.wisgets/signup.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/my_button.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 import 'package:ninja_store/utils/constants/text_strings.dart';
+import 'package:ninja_store/utils/validators/validation.dart';
 
 class NLoginForm extends StatelessWidget {
   const NLoginForm({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Form(
+      key: controller.loginFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: NSizes.spaceBtwSections),
         child: Column(
           children: [
             ///email
             TextFormField(
+              controller: controller.email,
+              validator: (value) => TValidator.validateEmail(value),
               decoration: InputDecoration(
                 prefixIcon: Icon(Iconsax.direct_left),
                 labelText: NTexts.email,
@@ -30,12 +37,30 @@ class NLoginForm extends StatelessWidget {
             SizedBox(height: NSizes.spaceBtwInputFields),
 
             ///password
-            TextFormField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Iconsax.password_check),
-                labelText: NTexts.password,
-                hintText: NTexts.password,
-                labelStyle: TextStyle(fontSize: 20),
+            ///Password
+            Obx(
+              () => TextFormField(
+                controller: controller.password,
+                obscureText: controller.hidePassword.value,
+                validator: (value) => TValidator.validatePassword(value),
+                decoration: InputDecoration(
+                  labelText: NTexts.password,
+                  hintText: NTexts.password,
+                  labelStyle: TextStyle(fontSize: 20),
+                  hintStyle: TextStyle(fontSize: 20),
+                  prefixIcon: Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                    onPressed:
+                        () =>
+                            controller.hidePassword.value =
+                                !controller.hidePassword.value,
+                    icon: Icon(
+                      controller.hidePassword.value
+                          ? Iconsax.eye_slash
+                          : Iconsax.eye,
+                    ),
+                  ),
+                ),
               ),
             ),
             SizedBox(height: NSizes.spaceBtwInputFields / 2),
@@ -46,7 +71,15 @@ class NLoginForm extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Checkbox(value: true, onChanged: (value) {}),
+                    Obx(
+                      () => Checkbox(
+                        value: controller.rememberMe.value,
+                        onChanged:
+                            (value) =>
+                                controller.rememberMe.value =
+                                    !controller.rememberMe.value,
+                      ),
+                    ),
                     const Text(
                       NTexts.rememberMe,
                       style: TextStyle(fontSize: 18),
@@ -69,7 +102,7 @@ class NLoginForm extends StatelessWidget {
             MyButton(
               colors: NColors.primary,
               title: NTexts.signIn,
-              onPressed: () {},
+              onPressed: () => controller.emailAndPasswordSignIn(),
             ),
             SizedBox(height: NSizes.spaceBtwSections),
             SizedBox(

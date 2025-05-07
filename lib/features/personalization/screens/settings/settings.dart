@@ -6,6 +6,7 @@ import 'package:ninja_store/common/widgets/custom_shapes/containers/curved%20_ed
 import 'package:ninja_store/common/widgets/list_tile/settings_menu_tile.dart';
 import 'package:ninja_store/common/widgets/list_tile/user_profile.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
+import 'package:ninja_store/features/authentication/screens/login/login.dart';
 import 'package:ninja_store/features/personalization/screens/address/address.dart';
 import 'package:ninja_store/features/personalization/screens/profile/widgets/profile.dart';
 import 'package:ninja_store/features/shop/screens/order/order.dart';
@@ -132,7 +133,7 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () => Get.off(() => LoginScreen()),
                       child: const Text(
                         'الخروج',
                         style: TextStyle(

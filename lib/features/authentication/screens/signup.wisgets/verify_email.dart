@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ninja_store/data/repositories_authentication/authentication/authentication_repositories.dart';
+import 'package:ninja_store/features/authentication/controllers/signup/verify_email_controller.dart';
 import 'package:ninja_store/features/authentication/screens/login/login.dart';
-import 'package:ninja_store/features/authentication/screens/login/widgets/success_screen/sucess_screen.dart';
-import 'package:ninja_store/features/authentication/screens/signup.wisgets/signup.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/constants/my_button.dart';
@@ -11,15 +11,17 @@ import 'package:ninja_store/utils/constants/sizes.dart';
 import 'package:ninja_store/utils/constants/text_strings.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
-  const VerifyEmailScreen({super.key});
+  const VerifyEmailScreen({super.key, this.email});
+  final String? email;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(VerifyEmailController());
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () => Get.offAll(() => const LoginScreen()),
+            onPressed: () => AuthenticationRepository.instance.logout,
             icon: const Icon(CupertinoIcons.clear),
           ),
         ],
@@ -42,7 +44,7 @@ class VerifyEmailScreen extends StatelessWidget {
               ),
               SizedBox(height: NSizes.spaceBtwItems - 15),
               Text(
-                'support@help',
+                email ?? '',
                 style: Theme.of(context).textTheme.headlineLarge,
                 textAlign: TextAlign.center,
               ),
@@ -58,15 +60,7 @@ class VerifyEmailScreen extends StatelessWidget {
               MyButton(
                 colors: NColors.primary,
                 title: NTexts.tContinue,
-                onPressed:
-                    () => Get.to(
-                      () => SucessScreen(
-                        image: NImages.staticSuccessIllustration,
-                        title: NTexts.yourAccountCreatedTitle,
-                        subTitle: NTexts.yourAccountCreatedSubTitle,
-                        onPressed: () => Get.to(() => const LoginScreen()),
-                      ),
-                    ),
+                onPressed: () => controller.checkEmailVertificationStatus(),
               ),
               SizedBox(height: NSizes.spaceBtwSections),
 
@@ -81,7 +75,7 @@ class VerifyEmailScreen extends StatelessWidget {
                       ), // التحكم في الانحناء
                     ),
                   ),
-                  onPressed: () => Get.to(() => const SignupScreen()),
+                  onPressed: () => controller.sendEmailVertification(),
                   child: const Text(
                     NTexts.resendEmail,
                     style: TextStyle(
