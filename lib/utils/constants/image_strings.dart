@@ -42,4 +42,5 @@ class NImages {
   // -- Lottie
   static const String successfullyRegisterAnimation =
       'assets/animation/register.json';
+  static const String docerAnimation = 'assets/animation/docer.json';
 }
