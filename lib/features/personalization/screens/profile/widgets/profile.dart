@@ -9,6 +9,7 @@ import 'package:ninja_store/features/personalization/screens/profile/change.dart
 import 'package:ninja_store/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
+import 'package:ninja_store/utils/constants/shimmer.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -43,9 +44,27 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    NCircularImage(image: NImages.user, width: 80, height: 80),
+                    Obx(() {
+                      final NetworkImage = controller.user.value.profilePicture;
+                      final image =
+                          NetworkImage.isNotEmpty ? NetworkImage : NImages.user;
+
+                      return controller.imageUploading.value
+                          ? const NShimmerEffect(
+                            width: 80,
+                            height: 80,
+                            radius: 80,
+                          )
+                          : NCircularImage(
+                            image: image,
+                            width: 80,
+                            height: 80,
+                            isNetworkImage: NetworkImage.isNotEmpty,
+                          );
+                    }),
+
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () => controller.uploadUserProfilePicture(),
                       child: const Text(
                         'تغيير صورة الحساب الشخصي',
                         style: TextStyle(

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ninja_store/data/repositories_authentication/authentication/authentication_repositories.dart';
 import 'package:ninja_store/data/repositories_authentication/user/user.model.dart';
 import 'package:ninja_store/data/repositories_authentication/user/user.repository.dart';
@@ -16,6 +17,7 @@ class UserController extends GetxController {
   static UserController get instance => Get.find();
 
   final profileLoading = false.obs;
+  final imageUploading = false.obs;
   Rx<UserModel> user = UserModel.empty().obs;
   final hidePassword = false.obs;
   final verifyEmail = TextEditingController();
@@ -46,28 +48,33 @@ class UserController extends GetxController {
   ///Save user record from any Registration provider
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        ///Convert Name to first and last name
-        final nameParts = UserModel.nameParts(
-          userCredentials.user!.displayName ?? '',
-        );
-        final username = UserModel.generateUsername(
-          userCredentials.user!.displayName ?? '',
-        );
+      //Refresh User record
+      await fetchUserRecord();
+      //if no record already stored
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          ///Convert Name to first and last name
+          final nameParts = UserModel.nameParts(
+            userCredentials.user!.displayName ?? '',
+          );
+          final username = UserModel.generateUsername(
+            userCredentials.user!.displayName ?? '',
+          );
 
-        ///Map Data
-        final user = UserModel(
-          id: userCredentials.user!.uid,
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join('') : '',
-          username: username,
-          email: userCredentials.user!.email ?? '',
-          phoneNumber: userCredentials.user!.phoneNumber ?? '',
-          profilePicture: userCredentials.user!.photoURL ?? '',
-        );
+          ///Map Data
+          final user = UserModel(
+            id: userCredentials.user!.uid,
+            firstName: nameParts[0],
+            lastName: nameParts.length > 1 ? nameParts.sublist(1).join('') : '',
+            username: username,
+            email: userCredentials.user!.email ?? '',
+            phoneNumber: userCredentials.user!.phoneNumber ?? '',
+            profilePicture: userCredentials.user!.photoURL ?? '',
+          );
 
-        ///Save user data
-        await userRepository.saveUserRecord(user);
+          ///Save user data
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (e) {
       NLoaders.warningSnackBar(
@@ -230,6 +237,39 @@ class UserController extends GetxController {
     } catch (e) {
       NFullScreenLoader.stopLoading();
       NLoaders.warningSnackBar(title: 'حدث خطأ', message: e.toString());
+    }
+  }
+
+  //Upload Profile Image
+  uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 70,
+        maxHeight: 512,
+        maxWidth: 512,
+      );
+      if (image != null) {
+        imageUploading.value = true;
+        //upload image
+        final imageUrl = await userRepository.uploadImage(
+          'Users/Images/Profile',
+          image,
+        );
+        //update user image record
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+        NLoaders.successSnackBar(
+          title: 'تهانينا',
+          message: 'تم تحديث صورتك الشخصية',
+        );
+      }
+    } catch (e) {
+      NLoaders.errorSnackBar(title: 'حدث خطأ', message: 'حدث شيء خاطئ:$e');
+    } finally {
+      imageUploading.value = false;
     }
   }
 }
