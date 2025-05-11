@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ninja_store/common/widgets/images/n_circular_image.dart';
+import 'package:ninja_store/features/personalization/controllers/user_controller.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
 
@@ -10,16 +11,16 @@ class NUserProfileTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return ListTile(
       leading: NCircularImage(
         image: NImages.user,
-
         width: 50,
         height: 50,
         padding: 0,
       ),
       title: Text(
-        'أحمد',
+        controller.user.value.fullName,
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontFamily: 'MAJALLA',
@@ -28,7 +29,7 @@ class NUserProfileTitle extends StatelessWidget {
         ),
       ),
       subtitle: Text(
-        'طالب جامعي',
+        controller.user.value.email,
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontFamily: 'MAJALLA',

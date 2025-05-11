@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ninja_store/features/authentication/controllers/forget_password/forget_password_controller.dart';
+import 'package:ninja_store/features/authentication/screens/login/login.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/constants/my_button.dart';
@@ -8,7 +10,8 @@ import 'package:ninja_store/utils/constants/sizes.dart';
 import 'package:ninja_store/utils/constants/text_strings.dart';
 
 class ResetPassword extends StatelessWidget {
-  const ResetPassword({super.key});
+  const ResetPassword({super.key, required this.email});
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +35,13 @@ class ResetPassword extends StatelessWidget {
 
               ///Title & SubTitle
               Text(
+                email,
+                style: Theme.of(context).textTheme.headlineLarge,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: NSizes.spaceBtwItems - 15),
+
+              Text(
                 NTexts.changeYourPasswordTitle,
                 style: Theme.of(context).textTheme.headlineLarge,
                 textAlign: TextAlign.center,
@@ -48,7 +58,7 @@ class ResetPassword extends StatelessWidget {
               MyButton(
                 colors: NColors.primary,
                 title: NTexts.done,
-                onPressed: () {},
+                onPressed: () => Get.offAll(() => const LoginScreen()),
               ),
               SizedBox(height: NSizes.spaceBtwSections - 15),
 
@@ -63,7 +73,9 @@ class ResetPassword extends StatelessWidget {
                       ), // التحكم في الانحناء
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed:
+                      () => ForgetPasswordController.instance
+                          .resendPasswordResetEmail(email),
                   child: const Text(
                     NTexts.resendEmail,
                     style: TextStyle(
