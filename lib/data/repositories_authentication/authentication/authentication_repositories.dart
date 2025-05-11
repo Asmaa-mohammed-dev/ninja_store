@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ninja_store/data/repositories_authentication/authentication/n_firebase_auth_exception.dart';
+import 'package:ninja_store/data/repositories_authentication/user/user.repository.dart';
 import 'package:ninja_store/features/authentication/screens/login/login.dart';
 import 'package:ninja_store/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:ninja_store/features/authentication/screens/signup.wisgets/verify_email.dart';
@@ -19,6 +20,7 @@ class AuthenticationRepository extends GetxController {
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
   // Called from main.dart on app launch
+  User? get authUser => _auth.currentUser;
   @override
   void onReady() {
     FlutterNativeSplash.remove();
@@ -125,6 +127,32 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  //[ReAuthticate] -Re Authenticate user
+  Future<void> reAuthenticateWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    try {
+      //Create a credential
+      AuthCredential credential = EmailAuthProvider.credential(
+        email: email,
+        password: password,
+      );
+      //ReAuthenticate
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw NFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw NFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const NFormatException();
+    } on PlatformException catch (e) {
+      throw NPlatformException(e.code).message;
+    } catch (e) {
+      throw 'يوجد خطأ قد حدث، حاول مرة أخرى';
+    }
+  }
+
   /* ---------------- [Federated identity & social sign in] --------------------*/
   // Google Authentication google
   Future<UserCredential> signInWithGoogle() async {
@@ -180,4 +208,20 @@ class AuthenticationRepository extends GetxController {
   }
 
   //Delete user - Remove user Auth and Firestore Account
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+      throw NFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw NFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const NFormatException();
+    } on PlatformException catch (e) {
+      throw NPlatformException(e.code).message;
+    } catch (e) {
+      throw 'حدث خطأ، حاول مرة أخرى';
+    }
+  }
 }
