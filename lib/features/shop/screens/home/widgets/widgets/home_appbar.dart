@@ -4,7 +4,7 @@ import 'package:ninja_store/common/widgets/custom_shapes/appbar/appbar.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/cart_menu_icon/cart_menu_icon.dart';
 import 'package:ninja_store/features/personalization/controllers/user_controller.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
-import 'package:ninja_store/utils/constants/shimmer.dart';
+import 'package:ninja_store/common/widgets/shimmer/shimmer.dart';
 import 'package:ninja_store/utils/constants/text_strings.dart';
 
 class NHomeAppBar extends StatelessWidget {

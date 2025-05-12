@@ -3,12 +3,13 @@ import 'package:ninja_store/common/widgets/brands/brand_show_case.dart';
 import 'package:ninja_store/common/widgets/layouts/grid_layout.dart';
 import 'package:ninja_store/common/widgets/products/product_card_vertical.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
+import 'package:ninja_store/features/shop/models/category_model.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
 class NCategoryTab extends StatelessWidget {
-  const NCategoryTab({super.key});
-
+  const NCategoryTab({super.key, required this.category});
+  final CategoryModel category;
   @override
   Widget build(BuildContext context) {
     return ListView(

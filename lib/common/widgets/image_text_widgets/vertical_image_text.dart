@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ninja_store/common/widgets/images/n_circular_image.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
@@ -10,11 +11,13 @@ class NVerticalImageText extends StatelessWidget {
     this.textColor = NColors.white,
     this.backgroundColor = NColors.white,
     this.onTap,
+    this.isNetworkImage = false,
   });
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
   final void Function()? onTap;
+  final bool isNetworkImage;
 
   @override
   Widget build(BuildContext context) {
@@ -26,21 +29,14 @@ class NVerticalImageText extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: 56,
-                height: 56,
-                padding: const EdgeInsets.all(NSizes.sm),
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: Center(
-                  child: Image(
-                    image: AssetImage(image),
-                    fit: BoxFit.cover,
-                    // color: NColors.dark,
-                  ),
-                ),
+              //Circular Icon
+              NCircularImage(
+                image: image,
+                fit: BoxFit.fitWidth,
+                padding: NSizes.sm * 1.4,
+                isNetworkImage: isNetworkImage,
+                backgroundColor: backgroundColor,
+                overlayColor: NColors.dark,
               ),
 
               //text
