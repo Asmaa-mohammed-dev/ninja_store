@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
-import 'package:ninja_store/utils/constants/shimmer.dart';
+import 'package:ninja_store/common/widgets/shimmer/shimmer.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
 class NCircularImage extends StatelessWidget {
@@ -48,6 +48,8 @@ class NCircularImage extends StatelessWidget {
                     progressIndicatorBuilder:
                         (context, url, downloadProgress) =>
                             const NShimmerEffect(width: 55, height: 55),
+                    errorWidget:
+                        (context, url, error) => const Icon(Icons.error),
                   )
                   : Image(
                     fit: fit,

@@ -9,7 +9,7 @@ import 'package:ninja_store/features/personalization/screens/profile/change.dart
 import 'package:ninja_store/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
-import 'package:ninja_store/utils/constants/shimmer.dart';
+import 'package:ninja_store/common/widgets/shimmer/shimmer.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
 class ProfileScreen extends StatelessWidget {

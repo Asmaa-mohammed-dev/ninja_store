@@ -6,6 +6,7 @@ import 'package:ninja_store/common/widgets/custom_shapes/cart_menu_icon/cart_men
 import 'package:ninja_store/common/widgets/custom_shapes/containers/curved%20_edges/search_container.dart';
 import 'package:ninja_store/common/widgets/layouts/grid_layout.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
+import 'package:ninja_store/features/shop/controllers/category_controllers.dart';
 import 'package:ninja_store/features/shop/screens/brands/all_brands.dart';
 import 'package:ninja_store/features/shop/screens/home/store/widgets/category_tab.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/n_brand_card.dart';
@@ -17,8 +18,9 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance.featuredCategories;
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         appBar: NAppBar(
           title: Text(
@@ -75,25 +77,19 @@ class StoreScreen extends StatelessWidget {
                 ),
                 //Tabs
                 bottom: NTabBar(
-                  tabs: [
-                    Tab(child: Text('المخبوزات')),
-                    Tab(child: Text('الألبان')),
-                    Tab(child: Text('أرز ومعكرونة')),
-                    Tab(child: Text('مخللات')),
-                    Tab(child: Text('صلصة')),
-                  ],
+                  tabs:
+                      categories
+                          .map((category) => Tab(child: Text(category.name)))
+                          .toList(),
                 ),
               ),
             ];
           },
           body: TabBarView(
-            children: [
-              NCategoryTab(),
-              NCategoryTab(),
-              NCategoryTab(),
-              NCategoryTab(),
-              NCategoryTab(),
-            ],
+            children:
+                categories
+                    .map((category) => NCategoryTab(category: category))
+                    .toList(),
           ),
         ),
       ),

@@ -25,6 +25,7 @@ class NLoaders {
           child: Center(
             child: Text(
               message,
+              textDirection: TextDirection.rtl,
               style: Theme.of(Get.context!).textTheme.labelLarge,
             ),
           ),
@@ -68,6 +69,7 @@ class NLoaders {
     Get.snackbar(
       title,
       message,
+
       isDismissible: true,
       shouldIconPulse: true,
       duration: Duration(seconds: 3),

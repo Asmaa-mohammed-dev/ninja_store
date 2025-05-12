@@ -20,6 +20,11 @@ class NImages {
   static const String deliveredEmailIllustration = 'assets/images/6.jpg';
   static const String verifyIllustration = 'assets/images/6.jpg';
   static const String meatIcon = 'assets/icons/categories/24.png';
+  static const String chickenIcon = 'assets/icons/categories/44.png';
+  static const String fishIcon = 'assets/icons/categories/45.png';
+  static const String vegIcon = 'assets/icons/categories/46.png';
+  static const String fruitIcon = 'assets/icons/categories/47.png';
+
   static const String animation = 'assets/animation/loading.json';
 
   // --banner Images
