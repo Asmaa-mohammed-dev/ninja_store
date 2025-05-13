@@ -10,7 +10,6 @@ import 'package:ninja_store/features/shop/screens/home/widgets/widgets/home_appb
 import 'package:ninja_store/features/shop/screens/home/widgets/widgets/home_categories.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/widgets/promo_slider.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
-import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -57,13 +56,7 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(NSizes.defaultSpace),
               child: Column(
                 children: [
-                  NpromoSider(
-                    banners: [
-                      NImages.prombanner1,
-                      NImages.prombanner2,
-                      NImages.prombanner3,
-                    ],
-                  ),
+                  NpromoSider(),
                   SizedBox(height: NSizes.spaceBtwSections),
                   NsectionHeading(
                     title: 'الأطعمة الرائجة',

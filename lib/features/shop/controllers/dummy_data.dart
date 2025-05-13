@@ -1,15 +1,27 @@
+import 'package:ninja_store/features/shop/models/banner_model.dart';
 import 'package:ninja_store/features/shop/models/category_model.dart';
+import 'package:ninja_store/routes/routes.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
 
 class NDummyData {
   //Banners
-  // static final List<BannerModel> banners = [
-  //   BannerModel(
-  //     imageUrl: NImages.prombanner1,
-  //     targetScreen: NRoutes.order,
-  //     active: false,
-  //   ),
-  // ];
+  static final List<BannerModel> banners = [
+    BannerModel(
+      imageUrl: NImages.prombanner1,
+      targetScreen: NRoutes.order,
+      active: false,
+    ),
+    BannerModel(
+      imageUrl: NImages.prombanner2,
+      targetScreen: NRoutes.cart,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: NImages.prombanner3,
+      targetScreen: NRoutes.favourites,
+      active: true,
+    ),
+  ];
   //User
   // static final UserModel user = UserModel();
   //Cart
