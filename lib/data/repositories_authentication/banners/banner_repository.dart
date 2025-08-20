@@ -20,7 +20,7 @@ class BannerRepository extends GetxController {
               .where('Active', isEqualTo: true)
               .get();
       return result.docs
-          .map((DocumentSnapshot) => BannerModel.fromSnapshot(DocumentSnapshot))
+          .map((documentSnapshot) => BannerModel.fromSnapshot(documentSnapshot))
           .toList();
     } on FirebaseException catch (e) {
       throw NFirebaseException(e.code).message;

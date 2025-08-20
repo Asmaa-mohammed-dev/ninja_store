@@ -13,8 +13,8 @@ class CategoryController extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
     fetchCategories();
+    super.onInit();
   }
 
   //Load category data

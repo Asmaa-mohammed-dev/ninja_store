@@ -37,10 +37,20 @@ class NImages {
 
   static const String productImage3 = 'assets/images/products/product26.png';
   static const String productImage4 = 'assets/images/products/product27.png';
+  static const String productImage11 =
+      'assets/images/products/productimage11.png';
+  static const String productImage111 =
+      'assets/images/products/productmage111.png';
+  static const String productImage21 =
+      'assets/images/products/productImage2.png';
+  static const String productImage31 =
+      'assets/images/products/productimage31.png';
+  static const String productImage41 =
+      'assets/images/products/productImage41.png';
 
   // -- product logo
   static const String Almarai = 'assets/images/products/almarai.png';
-  // -- product logo
+  // -- person logo
   static const String user = 'assets/images/users/man.png';
   // -- Payment methods
   static const String paypal = 'assets/images/payment_methods/paypal.png';
