@@ -11,7 +11,7 @@ class NVerticalImageText extends StatelessWidget {
     this.textColor = NColors.white,
     this.backgroundColor = NColors.white,
     this.onTap,
-    this.isNetworkImage = false,
+    this.isNetworkImage = true,
   });
   final String image, title;
   final Color textColor;
@@ -32,6 +32,7 @@ class NVerticalImageText extends StatelessWidget {
               //Circular Icon
               NCircularImage(
                 image: image,
+                height: 56,
                 fit: BoxFit.fitWidth,
                 padding: NSizes.sm * 1.4,
                 isNetworkImage: isNetworkImage,

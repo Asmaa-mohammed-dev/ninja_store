@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
+import 'package:ninja_store/features/shop/models/product_model.dart';
 import 'package:ninja_store/features/shop/product_details/widgets/bottom_add_to_cart_widget.dart';
 import 'package:ninja_store/features/shop/product_details/widgets/n_product_attribute.dart';
 
@@ -13,7 +14,8 @@ import 'package:ninja_store/utils/constants/sizes.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetail extends StatelessWidget {
-  const ProductDetail({super.key});
+  const ProductDetail({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {

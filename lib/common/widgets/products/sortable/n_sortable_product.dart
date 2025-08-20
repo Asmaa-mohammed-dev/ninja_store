@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ninja_store/common/widgets/layouts/grid_layout.dart';
 import 'package:ninja_store/common/widgets/products/product_card_vertical.dart';
+import 'package:ninja_store/features/shop/models/product_model.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
 class NSortableProducts extends StatelessWidget {
@@ -38,7 +39,8 @@ class NSortableProducts extends StatelessWidget {
         //Products
         NGridLayout(
           itemCount: 4,
-          itemBuilder: (_, index) => NProductCardVertical(),
+          itemBuilder:
+              (_, index) => NProductCardVertical(product: ProductModel.empty()),
         ),
       ],
     );

@@ -5,6 +5,7 @@ import 'package:ninja_store/common/widgets/custom_shapes/appbar/appbar.dart';
 import 'package:ninja_store/common/widgets/icons/n_circular_icon.dart';
 import 'package:ninja_store/common/widgets/layouts/grid_layout.dart';
 import 'package:ninja_store/common/widgets/products/product_card_vertical.dart';
+import 'package:ninja_store/features/shop/models/product_model.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/home.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
@@ -37,7 +38,9 @@ class FavoritScreen extends StatelessWidget {
             children: [
               NGridLayout(
                 itemCount: 4,
-                itemBuilder: (_, index) => const NProductCardVertical(),
+                itemBuilder:
+                    (_, index) =>
+                        NProductCardVertical(product: ProductModel.empty()),
               ),
             ],
           ),

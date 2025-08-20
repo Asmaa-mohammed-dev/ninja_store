@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ninja_store/features/authentication/controllers/login/login_controller.dart';
 import 'package:ninja_store/features/authentication/screens/password_configuration/forget_password.dart';
@@ -36,7 +35,6 @@ class NLoginForm extends StatelessWidget {
             ),
             SizedBox(height: NSizes.spaceBtwInputFields),
 
-            ///password
             ///Password
             Obx(
               () => TextFormField(

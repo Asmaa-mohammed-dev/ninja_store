@@ -154,30 +154,6 @@ class UserController extends GetxController {
     );
   }
 
-  // void deleteAccountWarningPopup() {
-  //   Get.defaultDialog(
-  //     contentPadding: const EdgeInsets.all(NSizes.md),
-  //     title: 'حذف الحساب',
-  //     middleText:
-  //         'هل أنت متأكد من حذف حسابك نهائيًا؟هذا الإجراء غير قابل للتراجع، وستتم إزالة جميع بياناتك بشكل نهائي. ',
-  //     confirm: ElevatedButton(
-  //       onPressed: () async => deleteUserAccount(),
-
-  //       style: ElevatedButton.styleFrom(
-  //         backgroundColor: Colors.red,
-  //         side: const BorderSide(color: Colors.red),
-  //       ),
-  //       child: const Padding(
-  //         padding: EdgeInsets.symmetric(horizontal: NSizes.lg),
-  //         child: Text('حذف'),
-  //       ),
-  //     ),
-  //     cancel: OutlinedButton(
-  //       onPressed: () => Navigator.of(Get.overlayContext!).pop(),
-  //       child: const Text('الغاء'),
-  //     ),
-  //   );
-  // }
 
   //Delete User Account
   void deleteUserAccount() async {

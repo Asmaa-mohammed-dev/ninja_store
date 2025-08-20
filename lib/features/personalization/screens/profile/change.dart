@@ -62,6 +62,18 @@ class ChangeName extends StatelessWidget {
                         prefixIcon: Icon(Iconsax.user),
                       ),
                     ),
+                    SizedBox(height: NSizes.spaceBtwInputFields),
+                    TextFormField(
+                      controller: controller.lastName,
+                      validator:
+                          (value) =>
+                              TValidator.validateEmptyText('Last name', value),
+                      expands: false,
+                      decoration: const InputDecoration(
+                        labelText: NTexts.lastName,
+                        prefixIcon: Icon(Iconsax.user),
+                      ),
+                    ),
                   ],
                 ),
               ),

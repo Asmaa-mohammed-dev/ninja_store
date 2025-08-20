@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ninja_store/data/repositories_authentication/authentication/authentication_repositories.dart';
 import 'package:ninja_store/features/authentication/controllers/signup/verify_email_controller.dart';
-import 'package:ninja_store/features/authentication/screens/login/login.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/constants/my_button.dart';

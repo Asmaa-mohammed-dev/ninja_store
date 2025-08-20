@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ninja_store/app.dart';
 import 'package:ninja_store/data/repositories_authentication/authentication/authentication_repositories.dart';
+import 'package:ninja_store/features/shop/controllers/firestore_uploader.dart';
 import 'package:ninja_store/firebase_options.dart';
 
 // Entry point of flutter app
@@ -23,6 +24,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((FirebaseApp value) => Get.put(AuthenticationRepository()));
+  await FirestoreUploader.uploadProductsToFirestore();
   // Todo: initialize Authentication
   // Load all The Material Design / Themes / Localization / Bindings
   runApp(const App());
