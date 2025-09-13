@@ -1,6 +1,7 @@
 class NImages {
   // --App Logos
   static const String lightAppLogo = 'assets/logos/12.png';
+  static const String appLogo = 'assets/logos/18.PNG';
 
   // --Social Logos
   static const String google = 'assets/images/google.png';
@@ -15,7 +16,46 @@ class NImages {
   // --Animation Images
   static const String productsIllustration = 'assets/images/6.png';
   static const String productSaleIllustration = 'assets/images/7.jpg';
-  static const String staticSuccessIllustration = 'assets/images/6.png';
-  static const String deliveredEmailIllustration = 'assets/images/6.png';
-  static const String verifyIllustration = 'assets/images/6.png';
+  static const String staticSuccessIllustration = 'assets/images/7.jpg';
+  static const String deliveredEmailIllustration = 'assets/images/6.jpg';
+  static const String verifyIllustration = 'assets/images/6.jpg';
+  static const String meatIcon = 'assets/icons/categories/24.png';
+  static const String chickenIcon = 'assets/icons/categories/44.png';
+  static const String fishIcon = 'assets/icons/categories/45.png';
+  static const String vegIcon = 'assets/icons/categories/46.png';
+  static const String fruitIcon = 'assets/icons/categories/47.png';
+
+  static const String animation = 'assets/animation/loading.json';
+
+  // --banner Images
+  static const String prombanner1 = 'assets/images/banners/27.png';
+  static const String prombanner2 = 'assets/images/banners/28.png';
+  static const String prombanner3 = 'assets/images/banners/29.png';
+  // -- product
+  static const String productImage1 = 'assets/images/products/alsafi-1.png';
+  static const String productImage2 = 'assets/images/products/product25.png';
+
+  static const String productImage3 = 'assets/images/products/product26.png';
+  static const String productImage4 = 'assets/images/products/product27.png';
+  static const String productImage11 =
+      'assets/images/products/productimage11.png';
+  static const String productImage111 =
+      'assets/images/products/productmage111.png';
+  static const String productImage21 =
+      'assets/images/products/productImage2.png';
+  static const String productImage31 =
+      'assets/images/products/productimage31.png';
+  static const String productImage41 =
+      'assets/images/products/productImage41.png';
+
+  // -- product logo
+  static const String Almarai = 'assets/images/products/almarai.png';
+  // -- person logo
+  static const String user = 'assets/images/users/man.png';
+  // -- Payment methods
+  static const String paypal = 'assets/images/payment_methods/paypal.png';
+  // -- Lottie
+  static const String successfullyRegisterAnimation =
+      'assets/animation/register.json';
+  static const String docerAnimation = 'assets/animation/docer.json';
 }

@@ -8,7 +8,7 @@ class NTexts {
   //Authentication Form Text
   static const String firstName = "الاسم الأول";
   static const String lastName = "الاسم الأخير";
-  static const String email = "ايميل";
+  static const String email = "بريدك الالكتروني";
   static const String password = "كلمة السر";
   static const String newPassword = "كلمة سر جديدة";
   static const String username = "الاسم";
@@ -26,6 +26,7 @@ class NTexts {
   static const String isAgreeTo = "أنا أوافق على ";
   static const String and = "و";
   static const String done = "تمام";
+  static const String loginSubTitle = " أكمل بياناتك الشخصية";
 
   static const String submit = "تأكيد";
 
@@ -34,15 +35,15 @@ class NTexts {
   static const String privacyPolicy = "سياسة الخصوصية";
   static const String termsOfUse = "شروط الاستخدام";
   static const String vertificationCode = "كود التأكيد";
-  static const String resendEmail = "إعادة إرسال البريد الإلكتروني";
+  static const String resendEmail = "إعادة إرسال  ";
 
   //Authentication Heading Text
   static const String homeAppbarTitle = "يوم جيد للتسوق";
   static const String homeAppbarSubTitle = "نينجا";
   static const String loginTitle = "أهلًا بك،";
-  static const String loginSubTitle = "أستكشف خيارات لا محدودة";
-  static const String signUpTitle = "هيا للنشيء حساب";
-  static const String forgetPasswordTitle = "أنسى كلمة السر";
+  // static const String loginSubTitle = "أستكشف خيارات لا محدودة";
+  static const String signUpTitle = "هيا لننشيء حسابك";
+  static const String forgetPasswordTitle = "نسيت كلمة السر";
   static const String forgetPasswordSubTitle =
       "ضع إيميلك لإعادة تعيين كلمة السر";
   static const String resetPasswordTitle = "إعادة تعيين كلمة السر";
