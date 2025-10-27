@@ -21,7 +21,7 @@ class BrandProducts extends StatelessWidget {
                 //Brand Detail
                 NBrandCard(showBorder: true),
                 SizedBox(height: NSizes.spaceBtwSections),
-                NSortableProducts(),
+                NSortableProducts(products:[]),
               ],
             ),
           ),

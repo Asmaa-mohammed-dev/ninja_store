@@ -1,18 +1,24 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/appbar/appbar.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/curved_edges_widget.dart';
 import 'package:ninja_store/common/widgets/icons/n_circular_icon.dart';
 import 'package:ninja_store/common/widgets/images/n_rounde_image.dart';
+import 'package:ninja_store/features/shop/controllers/product/images_controller.dart';
+import 'package:ninja_store/features/shop/models/product_model.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
-import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
 class NProductImageSlider extends StatelessWidget {
-  const NProductImageSlider({super.key});
+  const NProductImageSlider({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ImagesController());
+    final images = controller.getAllProductImages(product);
     return NCurvedWidget(
       child: Container(
         color: NColors.light,
@@ -24,7 +30,21 @@ class NProductImageSlider extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(NSizes.productImageRadius * 2),
                 child: Center(
-                  child: Image(image: AssetImage(NImages.productImage1)),
+                  child: Obx(() {
+                    final image = controller.selectedProductImage.value;
+                    return GestureDetector(
+                      onTap: () => controller.showEnlargedImage(image),
+                      child: CachedNetworkImage(
+                        imageUrl: image,
+                        progressIndicatorBuilder:
+                            (_, __, downloadProgress) =>
+                                CircularProgressIndicator(
+                                  value: downloadProgress.progress,
+                                  color: NColors.primary,
+                                ),
+                      ),
+                    );
+                  }),
                 ),
               ),
             ),
@@ -36,19 +56,34 @@ class NProductImageSlider extends StatelessWidget {
               child: SizedBox(
                 height: 80,
                 child: ListView.separated(
-                  itemCount: 6,
+                  itemCount: images.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   separatorBuilder:
                       (_, __) => const SizedBox(width: NSizes.spaceBtwItems),
                   itemBuilder:
-                      (_, index) => NRoundedImage(
-                        width: 80,
-                        backgroundColor: NColors.white,
-                        border: Border.all(color: NColors.primary),
-                        padding: const EdgeInsets.all(NSizes.sm),
-                        imageUrl: NImages.Almarai,
-                      ),
+                      (_, index) => Obx(() {
+                        final imageSelected =
+                            controller.selectedProductImage.value ==
+                            images[index];
+                        return NRoundedImage(
+                          width: 80,
+                          isNetworkImage: true,
+                          backgroundColor: NColors.white,
+                          onPressed:
+                              () =>
+                                  controller.selectedProductImage.value =
+                                      images[index],
+                          border: Border.all(
+                            color:
+                                imageSelected
+                                    ? NColors.primary
+                                    : Colors.transparent,
+                          ),
+                          padding: const EdgeInsets.all(NSizes.sm),
+                          imageUrl: images[index],
+                        );
+                      }),
                 ),
               ),
             ),

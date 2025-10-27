@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/containers/curved%20_edges/primary_header_container.dart';
@@ -6,7 +7,7 @@ import 'package:ninja_store/common/widgets/layouts/grid_layout.dart';
 import 'package:ninja_store/common/widgets/products/product_card_vertical.dart';
 import 'package:ninja_store/common/widgets/shimmer/vertical_product_shimmer.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
-import 'package:ninja_store/features/shop/controllers/product_controller.dart';
+import 'package:ninja_store/features/shop/controllers/product/product_controller.dart';
 import 'package:ninja_store/features/shop/screens/all_products/all_products.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/widgets/home_appbar.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/widgets/home_categories.dart';
@@ -63,7 +64,8 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: NSizes.spaceBtwSections),
                   NsectionHeading(
                     title: 'الأطعمة الرائجة',
-                    onPressed: () => Get.to(() => const AllProducts()),
+                    onPressed: () => Get.to(() =>  AllProducts(title: 'المنتجات الرائجة',
+                    futureMethod: controller.fetchAllFeaturedProducts())),
                   ),
                   SizedBox(height: NSizes.spaceBtwItems),
 

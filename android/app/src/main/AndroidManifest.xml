@@ -6,6 +6,10 @@
         <meta-data
         android:name="flutter.using_impeller"
         android:value="true"/>
+        <!-- Debug App Check -->
+        <meta-data
+            android:name="firebase.appcheck.debug"
+            android:value="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
