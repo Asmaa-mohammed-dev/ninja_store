@@ -55,6 +55,7 @@ class NProductCardVertical extends StatelessWidget {
                     ),
                   ),
                   //Sale Tag
+                  if(salePercentage != null)
                   Positioned(
                     top: 4,
                     child: NRoundedContainer(

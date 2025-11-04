@@ -62,6 +62,24 @@ class ProductRepository extends GetxController {
     }
   }
 
+    //Get limited featured products
+  Future<List<ProductModel>> getProductsForBrand({required String brandId,int limit = -1}) async {
+    try {
+      final querySnapshot = limit == -1 ? await _db.collection('Products').where('Brand.Id',isEqualTo: brandId).get()
+: await _db.collection('Products').where('Brand.Id',isEqualTo: brandId).limit(limit).get();
+final products = querySnapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+print('✅ Brand ID used in query: $brandId');
+print('✅ Documents found: ${querySnapshot.docs.length}');
+return products;
+    } on FirebaseException catch (e) {
+      throw NFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const NFormatException();
+    } on PlatformException catch (e) {
+      throw NPlatformException(e.code).message;
+    }
+  }
+
   //Upload dummy data to the cloud Firebase
   Future<void> uploadDummyData(List<ProductModel> products) async {
     try {

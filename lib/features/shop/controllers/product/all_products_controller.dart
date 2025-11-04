@@ -22,9 +22,9 @@ return products;
   void sortProducts (String sortOption){
     selectedSortOption.value = sortOption;
     switch (sortOption){
-      case 'Name': products.sort((a,b) => a.title.compareTo(b.title));
+      case 'الاسم': products.sort((a,b) => a.title.compareTo(b.title));
       break;
-      case 'Higher Price': products.sort((a,b) => b.price.compareTo(b.price));
+      case 'أعلى سعر': products.sort((a,b) => b.price.compareTo(a.price));
       break;
       case 'أقل سعر': products.sort((a,b) => a.price.compareTo(b.price));
       break;

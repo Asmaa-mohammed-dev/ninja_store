@@ -233,7 +233,7 @@ class NDummyData {
       brand: BrandModel(
         id: '1',
         image: 'assets/icons/categories/24.png',
-        name: 'لحمة',
+        name: 'Nike',
         productsCount: 265,
         isFeatured: true,
       ),
