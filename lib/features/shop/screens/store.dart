@@ -5,9 +5,12 @@ import 'package:ninja_store/common/widgets/custom_shapes/appbar/appbar.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/cart_menu_icon/cart_menu_icon.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/containers/curved%20_edges/search_container.dart';
 import 'package:ninja_store/common/widgets/layouts/grid_layout.dart';
+import 'package:ninja_store/common/widgets/shimmer/brands_shimmer.dart';
 import 'package:ninja_store/common/widgets/texts/section_heading.dart';
 import 'package:ninja_store/features/shop/controllers/category_controllers.dart';
+import 'package:ninja_store/features/shop/controllers/product/brand_controller.dart';
 import 'package:ninja_store/features/shop/screens/brands/all_brands.dart';
+import 'package:ninja_store/features/shop/screens/brands/brand_product.dart';
 import 'package:ninja_store/features/shop/screens/home/store/widgets/category_tab.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/n_brand_card.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
@@ -18,6 +21,7 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brandController = Get.put(BrandController());
     final categories = CategoryController.instance.featuredCategories;
     return DefaultTabController(
       length: categories.length,
@@ -65,12 +69,25 @@ class StoreScreen extends StatelessWidget {
                         onPressed: () => Get.to(() => const AllBrandsScreen()),
                       ),
                       SizedBox(height: NSizes.spaceBtwSections / 1.5),
-                      NGridLayout(
-                        itemCount: 4,
-                        mainAxisExtent: 80,
-                        itemBuilder: (_, index) {
-                          return const NBrandCard(showBorder: false);
-                        },
+                      Obx(
+                        (){
+                          if(brandController.isLoading.value) return NBrandShimmer();
+                           if(brandController.featuredBrands.isEmpty) {
+                            return Center(
+                              child: Text('لا توجد بيانات', style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white))
+                            );
+                           }
+                          return NGridLayout(
+                          itemCount: brandController.featuredBrands.length,
+                          mainAxisExtent: 80,
+                          itemBuilder: (_, index) {
+                            final brand = brandController.featuredBrands[index];
+                            return  NBrandCard(showBorder: false, brand: brand,
+                            onTap: ()=> Get.to(() => BrandProducts(brand: brand)) ,);
+                          },
+                        );
+                        }
+                        
                       ),
                     ],
                   ),

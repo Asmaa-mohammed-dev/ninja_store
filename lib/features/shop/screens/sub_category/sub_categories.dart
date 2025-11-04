@@ -33,7 +33,7 @@ class SubCategoriesScreen extends StatelessWidget {
                 Column(
                   children: [
                     //heading
-                    NsectionHeading(title: 'الدجاج'),
+                    NsectionHeading(title: 'الدجاج',onPressed: () {}),
                   ],
                 ),
                 SizedBox(height: NSizes.spaceBtwItems / 2),

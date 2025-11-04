@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/rounded_container.dart';
+import 'package:ninja_store/features/shop/models/brand_model.dart';
 import 'package:ninja_store/features/shop/screens/home/widgets/n_brand_card.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
@@ -19,7 +20,7 @@ class NBrandSowcase extends StatelessWidget {
       child: Column(
         children: [
           //Brand with products count
-          const NBrandCard(showBorder: false),
+           NBrandCard(showBorder: false, brand: BrandModel.empty()),
           const SizedBox(height: NSizes.spaceBtwItems),
 
           //Brand Top 3 Product Images
