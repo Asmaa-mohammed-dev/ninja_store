@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/rounded_container.dart';
 import 'package:ninja_store/common/widgets/images/n_circular_image.dart';
 import 'package:ninja_store/common/widgets/texts/n_brand_title_text_with_verified_icon.dart';
+import 'package:ninja_store/features/shop/models/brand_model.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/enums.dart';
-import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
 class NBrandCard extends StatelessWidget {
-  const NBrandCard({super.key, required this.showBorder, this.onTap});
+  const NBrandCard({super.key, required this.showBorder, this.onTap, required this.brand});
+final BrandModel brand;
 
   final bool showBorder;
   final void Function()? onTap;
@@ -27,12 +28,12 @@ class NBrandCard extends StatelessWidget {
             Flexible(
               child: NCircularImage(
                 backgroundColor: Colors.transparent,
-                isNetworkImage: false,
+                isNetworkImage: true,
                 overlayColor: NColors.black,
-                image: NImages.Almarai,
+                image: brand.image,
               ),
             ),
-            SizedBox(height: NSizes.spaceBtwItems / 2),
+            const SizedBox(height: NSizes.spaceBtwItems / 2),
             //Text
             Expanded(
               child: Column(
@@ -40,11 +41,11 @@ class NBrandCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   NBransTitleWithVerifiedIcon(
-                    title: 'المراعي',
+                    title: brand.name,
                     brandTextSize: TextSizes.large,
                   ),
                   Text(
-                    '200 مُنتج',
+                  '${brand.productsCount ?? 0} مُنتج',
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,

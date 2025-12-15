@@ -10,6 +10,7 @@ import 'package:ninja_store/features/shop/product_details/widgets/product_detail
 import 'package:ninja_store/features/shop/product_details/widgets/product_meta_data.dart';
 import 'package:ninja_store/features/shop/product_details/widgets/rating_share_widget.dart';
 import 'package:ninja_store/features/shop/product_reviews/product_review.dart';
+import 'package:ninja_store/utils/constants/enums.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 import 'package:readmore/readmore.dart';
 
@@ -27,7 +28,7 @@ class ProductDetail extends StatelessWidget {
           child: Column(
             //Product Image Slider
             children: [
-              NProductImageSlider(),
+              NProductImageSlider(product: product),
 
               //Product Detail
               Padding(
@@ -41,11 +42,13 @@ class ProductDetail extends StatelessWidget {
                     //Rating & Share
                     NRatingAndShare(),
                     //Price, Title, Stack & Brand
-                    NProductMetaData(),
+                    NProductMetaData(product: product),
                     //Attribute
-                    NProductAttribute(),
+                    if (product.productType == ProductType.variable.toString())
+                      NProductAttribute(product: product),
                     //Checkout  Button
-                    const SizedBox(height: NSizes.spaceBtwSections),
+                    if (product.productType == ProductType.variable.toString())
+                      const SizedBox(height: NSizes.spaceBtwSections),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -60,8 +63,8 @@ class ProductDetail extends StatelessWidget {
                       showActionButton: false,
                     ),
                     const SizedBox(height: NSizes.spaceBtwItems),
-                    const ReadMoreText(
-                      'هذا منتج قشطة فاخرة من الصافي تُعرف بجمال القوام ولذتها ، هنالك الكثير لتضيفه في سلة التسوق اكتشف أكثر هذا منتج خراي لتضعه في سلة تسوقك سيفدك ويسعد الأطفال ',
+                    ReadMoreText(
+                      product.description ?? '',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontFamily: 'MAJALLA',

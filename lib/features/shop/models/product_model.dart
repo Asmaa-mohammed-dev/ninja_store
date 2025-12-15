@@ -55,7 +55,7 @@ class ProductModel {
     stock: 10,
     price: 100,
     salePrice: 50,
-    thumbnail: 'https://picsum.photos/200',
+    thumbnail: 'https://cdn.pixabay.com/photo/2021/12/17/00/01/barbecue-6875418_1280.jpg',
     description: 'هَذَا مُنْتَجٌ لِلتَّجْرِبَةِ فَقَطْ',
     productType: ProductType.single.toString(),
     brand: BrandModel(name: 'مَارْكَةٌ تَجْرِيبِيَّةٌ', id: '', image: ''),
@@ -77,18 +77,26 @@ class ProductModel {
       'Description': description ?? '',
       'ProductType': productType,
       'ProductAttributes':
-          productAttributes?.map((e) => e.toJson()).toList() ?? [],
+          // productAttributes?.map((e) => e.toJson()).toList() ?? [],
+          productAttributes != null
+          ? productAttributes!.map((e) => e.toJson()).toList()
+          : [],
       'ProductVaritions':
-          productVariations?.map((e) => e.toJson()).toList() ?? [],
+          // productVariations?.map((e) => e.toJson()).toList() ?? [],
+           productVariations != null
+          ? productVariations!.map((e) => e.toJson()).toList()
+          : [],
     };
   }
 
   factory ProductModel.fromSnapshot(
     DocumentSnapshot<Map<String, dynamic>> document,
   ) {
-    final data = document.data();
-    if (data == null) return ProductModel.empty();
-
+    // final data = document.data();
+    // if (data == null) return ProductModel.empty();
+ if (document.data() == null) return ProductModel.empty();
+    final data = document.data()!;
+    
     return ProductModel(
       id: document.id,
       sku: data['SKU'] ?? '',

@@ -29,6 +29,18 @@ class ProductController extends GetxController {
       isLoading.value = false;
     }
   }
+   Future<List<ProductModel>> fetchAllFeaturedProducts() async {
+    try {
+
+      //Fetch Products
+      final products = await productRepository.getFeaturedProducts();
+    return products;
+    } catch (e) {
+      NLoaders.errorSnackBar(title: 'حدث خطأ', message: e.toString());
+      return [];
+    } 
+  }
+
 
   //
   String getProductPrice(ProductModel product) {

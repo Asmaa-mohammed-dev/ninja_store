@@ -1,0 +1,67 @@
+import 'package:get/get.dart';
+import 'package:ninja_store/data/product/product_repository.dart';
+import 'package:ninja_store/data/repositories_authentication/brands/brand_repository.dart';
+import 'package:ninja_store/features/shop/models/brand_model.dart';
+import 'package:ninja_store/features/shop/models/product_model.dart';
+import 'package:ninja_store/utils/popups/loaders.dart';
+
+class BrandController extends GetxController{
+  static BrandController get instance => Get.find();
+
+  RxBool isLoading = true.obs;
+  final RxList<BrandModel> allBrands = <BrandModel>[].obs;
+    final RxList<BrandModel> featuredBrands = <BrandModel>[].obs;
+    final brandRepository = Get.put(BrandRepository());
+    @override
+  void onInit() {
+   getFeaturedBrands();
+    super.onInit();
+  }
+
+  //Load brands
+
+  Future<void> getFeaturedBrands()async{
+    try{
+        //show loader while loading
+  isLoading.value = true;
+  final brands = await brandRepository.getAllBrands();
+  allBrands.assignAll(brands);
+  print('All Brands: ${allBrands.length}'); 
+  featuredBrands.assignAll(allBrands.where((brand) => brand.isFeatured ?? false).take(4));
+
+    print('Featured Brands: ${featuredBrands.length}');
+
+    }catch(e){
+      NLoaders.errorSnackBar(title: 'حدث خطأ',message: e.toString());
+    }finally{
+        //stop loader
+        isLoading.value = false;
+    }
+  }
+
+  //Get Brands for category
+  Future<List<BrandModel>> getBrandForCategory(String categoryId) async{
+
+    try{
+ final brands = await brandRepository.getBrandsForCategory(categoryId);
+    return brands;
+   
+  }  catch(e){
+    NLoaders.errorSnackBar(title: 'حدث خطأ', message: e.toString());
+return [];
+  }
+  }
+
+  //Get Brand Specific Products from your data soource
+  Future<List<ProductModel>> getBrandProducts({required String brandId,int limit = -1}) async{
+
+    try{
+final products = await ProductRepository.instance.getProductsForBrand(brandId:brandId);
+    return products;
+   
+  }  catch(e){
+    NLoaders.errorSnackBar(title: 'حدث خطأ', message: e.toString());
+return [];
+  }
+  }
+}
