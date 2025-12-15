@@ -26,8 +26,10 @@ class BrandController extends GetxController{
   isLoading.value = true;
   final brands = await brandRepository.getAllBrands();
   allBrands.assignAll(brands);
+  print('All Brands: ${allBrands.length}'); 
   featuredBrands.assignAll(allBrands.where((brand) => brand.isFeatured ?? false).take(4));
 
+    print('Featured Brands: ${featuredBrands.length}');
 
     }catch(e){
       NLoaders.errorSnackBar(title: 'حدث خطأ',message: e.toString());
@@ -38,12 +40,23 @@ class BrandController extends GetxController{
   }
 
   //Get Brands for category
-
-  //Get Brand Specific Products from your data soource
-  Future<List<ProductModel>> getBrandProducts(String brandId) async{
+  Future<List<BrandModel>> getBrandForCategory(String categoryId) async{
 
     try{
- final products = await ProductRepository.instance.getProductsForBrand(brandId:brandId);
+ final brands = await brandRepository.getBrandsForCategory(categoryId);
+    return brands;
+   
+  }  catch(e){
+    NLoaders.errorSnackBar(title: 'حدث خطأ', message: e.toString());
+return [];
+  }
+  }
+
+  //Get Brand Specific Products from your data soource
+  Future<List<ProductModel>> getBrandProducts({required String brandId,int limit = -1}) async{
+
+    try{
+final products = await ProductRepository.instance.getProductsForBrand(brandId:brandId);
     return products;
    
   }  catch(e){

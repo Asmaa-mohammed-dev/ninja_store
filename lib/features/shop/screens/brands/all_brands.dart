@@ -38,8 +38,9 @@ class AllBrandsScreen extends StatelessWidget {
                             );
                            }
                           return NGridLayout(
+                              mainAxisExtent: 80,
                           itemCount: brandController.allBrands.length,
-                          mainAxisExtent: 80,
+                        
                           itemBuilder: (_, index) {
                             final brand = brandController.allBrands[index];
                             return  NBrandCard(showBorder: true, brand: brand,

@@ -78,11 +78,12 @@ class StoreScreen extends StatelessWidget {
                             );
                            }
                           return NGridLayout(
-                          itemCount: brandController.featuredBrands.length,
+                      
                           mainAxisExtent: 80,
+                              itemCount: brandController.featuredBrands.length,
                           itemBuilder: (_, index) {
                             final brand = brandController.featuredBrands[index];
-                            return  NBrandCard(showBorder: false, brand: brand,
+                            return  NBrandCard(showBorder: true, brand: brand,
                             onTap: ()=> Get.to(() => BrandProducts(brand: brand)) ,);
                           },
                         );
@@ -108,6 +109,8 @@ class StoreScreen extends StatelessWidget {
                     .map((category) => NCategoryTab(category: category))
                     .toList(),
           ),
+        
+
         ),
       ),
     );

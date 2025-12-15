@@ -57,7 +57,7 @@ class NProductCardVertical extends StatelessWidget {
                   //Sale Tag
                   if(salePercentage != null)
                   Positioned(
-                    top: 4,
+                    top: 12,
                     child: NRoundedContainer(
                       radius: NSizes.sm,
                       backgroundColor: NColors.secondary.withAlpha(204),
@@ -98,7 +98,10 @@ class NProductCardVertical extends StatelessWidget {
                   children: [
                     NProductTitleText(title: product.title, smallSize: true),
                     const SizedBox(height: NSizes.spaceBtwItems / 2),
-                    NBransTitleWithVerifiedIcon(title: product.brand!.name),
+                    NBransTitleWithVerifiedIcon(
+                       // title: product.brand!.name,
+                      title: product.brand?.name ?? 'With no brand name'
+                    ),
                   ],
                 ),
               ),

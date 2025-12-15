@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/rounded_container.dart';
 import 'package:ninja_store/common/widgets/images/n_circular_image.dart';
 import 'package:ninja_store/common/widgets/texts/n_brand_title_text.dart';
+import 'package:ninja_store/common/widgets/texts/n_brand_title_text_with_verified_icon.dart';
 import 'package:ninja_store/common/widgets/texts/product_price.dart';
 import 'package:ninja_store/common/widgets/texts/product_title_text.dart';
 import 'package:ninja_store/features/shop/controllers/product/product_controller.dart';
 import 'package:ninja_store/features/shop/models/product_model.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
 import 'package:ninja_store/utils/constants/enums.dart';
-import 'package:ninja_store/utils/constants/image_strings.dart';
 import 'package:ninja_store/utils/constants/sizes.dart';
 
 class NProductMetaData extends StatelessWidget {
@@ -92,7 +92,7 @@ class NProductMetaData extends StatelessWidget {
                 height: 32,
                 overlayColor: NColors.black,
               ),
-              NBrandTitleText(
+              NBransTitleWithVerifiedIcon(
                 title: product.brand != null ? product.brand!.name : '',
                 brandTextSize: TextSizes.medium,
               ),

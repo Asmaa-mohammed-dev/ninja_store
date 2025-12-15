@@ -64,10 +64,10 @@ class ProductRepository extends GetxController {
 
     //Get limited featured products
   Future<List<ProductModel>> getProductsForBrand({required String brandId,int limit = -1}) async {
-    try {
-      final querySnapshot = limit == -1 ? await _db.collection('Products').where('Brand.Id',isEqualTo: brandId).get()
+    try {      final querySnapshot = limit == -1 ? await _db.collection('Products').where('Brand.Id',isEqualTo: brandId).get()
 : await _db.collection('Products').where('Brand.Id',isEqualTo: brandId).limit(limit).get();
 final products = querySnapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+
 print('✅ Brand ID used in query: $brandId');
 print('✅ Documents found: ${querySnapshot.docs.length}');
 return products;
@@ -79,6 +79,87 @@ return products;
       throw NPlatformException(e.code).message;
     }
   }
+//     Future<List<ProductModel>> getProductsForCategory({required String categoryId,int limit = 4}) async {
+//     try {
+
+      
+//       //Query to get all documents where productId matches the provided categoryId & Fetch limited or unlimited based on limit
+//       QuerySnapshot productCategoryQuery = limit == -1 ? await _db.collection('ProductCategory').where('categoryId',isEqualTo: categoryId).get()
+// : await _db.collection('ProductCategory').where('categoryId',isEqualTo: categoryId).limit(limit).get();
+// //Extract productIds from documents
+// List<String> productIds = productCategoryQuery.docs.map((doc) => doc['productId'] as String).toList();
+// //Query to get all  documents where the brandId is in the list of brandIds, FieldPath.documentId to query documents in collection
+// final productsQuery = await _db.collection('Products').where(FieldPath.documentId, whereIn: productIds).get();
+// List<ProductModel> products = productsQuery.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+
+// return products;
+//     } on FirebaseException catch (e) {
+//       throw NFirebaseException(e.code).message;
+//     } on FormatException catch (_) {
+//       throw const NFormatException();
+//     } on PlatformException catch (e) {
+//       throw NPlatformException(e.code).message;
+//     }
+//   }
+Future<List<ProductModel>> getProductsForCategory({
+  required String categoryId,
+  int limit = 4,
+}) async {
+  try {
+    print('------------------------------');
+    print('📌 Step 1: Fetching ProductCategory for categoryId = $categoryId');
+
+    // Step 1: Get all product-category mapping docs
+    QuerySnapshot productCategoryQuery = limit == -1
+        ? await _db
+            .collection('ProductCategory')
+            .where('categoryId', isEqualTo: categoryId)
+            .get()
+        : await _db
+            .collection('ProductCategory')
+            .where('categoryId', isEqualTo: categoryId)
+            .limit(limit)
+            .get();
+
+    print('📌 Step 2: Found category mappings: ${productCategoryQuery.docs.length}');
+
+    // Extract productIds from ProductCategory
+    List<String> productIds = productCategoryQuery.docs
+        .map((doc) => doc['productId'] as String)
+        .toList();
+
+    print('📌 Step 3: Extracted productIds: $productIds');
+
+    if (productIds.isEmpty) {
+      print('❗ No product IDs found for this category');
+      return [];
+    }
+
+    print('📌 Step 4: Fetching Products where documentId IN productIds');
+
+    // Step 2: Query the Products collection using document IDs
+    final productsQuery = await _db
+        .collection('Products')
+        .where(FieldPath.documentId, whereIn: productIds)
+        .get();
+
+    print('📌 Step 5: Found products: ${productsQuery.docs.length}');
+
+    List<ProductModel> products =
+        productsQuery.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+
+    print('📌 Step 6: Final products returned: ${products.length}');
+    print('------------------------------');
+
+    return products;
+  } on FirebaseException catch (e) {
+    throw NFirebaseException(e.code).message;
+  } on FormatException catch (_) {
+    throw const NFormatException();
+  } on PlatformException catch (e) {
+    throw NPlatformException(e.code).message;
+  }
+}
 
   //Upload dummy data to the cloud Firebase
   Future<void> uploadDummyData(List<ProductModel> products) async {

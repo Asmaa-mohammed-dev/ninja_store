@@ -28,7 +28,7 @@ class BrandProducts extends StatelessWidget {
                 NBrandCard(showBorder: true, brand:brand),
                 SizedBox(height: NSizes.spaceBtwSections),
                 FutureBuilder(
-                  future: controller.getBrandProducts(brand.id),
+                  future: controller.getBrandProducts(brandId:brand.id),
                   builder: (context, snapshot) {
                     //Handle loader, No Record, OR Erroe Message
                     const loader = NVerticalProductShimmer();
@@ -38,6 +38,8 @@ class BrandProducts extends StatelessWidget {
                     if(widget != null) return widget;
                        //Record Found!
                        final brandProducts = snapshot.data!;
+                       print('Brand ${brand.name} products: ${brandProducts.length}');
+
                     return NSortableProducts(products:brandProducts);
                   }
                 ),

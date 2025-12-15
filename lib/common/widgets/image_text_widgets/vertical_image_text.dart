@@ -43,7 +43,7 @@ class NVerticalImageText extends StatelessWidget {
               //text
               SizedBox(height: NSizes.spaceBtwItems / 2),
               SizedBox(
-                width: 70,
+                width: 55,
                 child: Center(
                   child: Text(
                     title,
