@@ -7,6 +7,7 @@ import 'package:ninja_store/app.dart';
 import 'package:ninja_store/data/repositories_authentication/authentication/authentication_repositories.dart';
 import 'package:ninja_store/features/shop/controllers/firestore_uploader.dart';
 import 'package:ninja_store/firebase_options.dart';
+import 'package:ninja_store/navigation_menu.dart';
 
 // Entry point of flutter app
 Future<void> main() async {
@@ -27,5 +28,7 @@ Future<void> main() async {
   await FirestoreUploader.uploadProductsToFirestore();
   // Todo: initialize Authentication
   // Load all The Material Design / Themes / Localization / Bindings
+    WidgetsFlutterBinding.ensureInitialized();
+     Get.put(NavigationController());
   runApp(const App());
 }
