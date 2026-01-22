@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:ninja_store/data/product/product_repository.dart';
 import 'package:ninja_store/data/repositories_authentication/categories/category_repository.dart';
 import 'package:ninja_store/features/shop/models/category_model.dart';
+import 'package:ninja_store/features/shop/models/product_model.dart';
 import 'package:ninja_store/utils/popups/loaders.dart';
 
 class CategoryController extends GetxController {
@@ -50,6 +52,28 @@ class CategoryController extends GetxController {
     }
   }
   //load selected category data
+Future<List<CategoryModel>> getSubCategories(String categoryId)async{
+  try {
+    final subCategories = await _categoryRepository.getSubCategories(categoryId);
+    return subCategories;
+  } catch (e) {
+    NLoaders.errorSnackBar(title: 'حدث خطأ',message: e.toString());
+    return[];
+    
+  }
+  
+}
 
   //Get Category or sub-category Products
+  Future<List<ProductModel>> getCategoryProducts({required String categoryId, int limit = 4}) async{
+    try{
+    //Fetch Limited (4) products against each subCategory;
+    final products = await ProductRepository.instance.getProductsForCategory(categoryId: categoryId, limit: limit);
+    return products;
+    }catch(e){
+      NLoaders.errorSnackBar(title: 'حدث خطأ',message: e.toString());
+      return [];
+    }
+
+  }
 }

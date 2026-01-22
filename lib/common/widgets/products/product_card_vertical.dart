@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ninja_store/common/styles/shadows.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/rounded_container.dart';
-import 'package:ninja_store/common/widgets/icons/n_circular_icon.dart';
 import 'package:ninja_store/common/widgets/images/n_rounde_image.dart';
+import 'package:ninja_store/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:ninja_store/common/widgets/texts/n_brand_title_text_with_verified_icon.dart';
 import 'package:ninja_store/common/widgets/texts/product_price.dart';
 import 'package:ninja_store/common/widgets/texts/product_title_text.dart';
-import 'package:ninja_store/features/shop/controllers/product_controller.dart';
+import 'package:ninja_store/features/shop/controllers/product/product_controller.dart';
 import 'package:ninja_store/features/shop/models/product_model.dart';
 import 'package:ninja_store/features/shop/product_details/product_detail.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
@@ -55,8 +55,9 @@ class NProductCardVertical extends StatelessWidget {
                     ),
                   ),
                   //Sale Tag
+                  if(salePercentage != null)
                   Positioned(
-                    top: 4,
+                    top: 12,
                     child: NRoundedContainer(
                       radius: NSizes.sm,
                       backgroundColor: NColors.secondary.withAlpha(204),
@@ -77,10 +78,7 @@ class NProductCardVertical extends StatelessWidget {
                   Positioned(
                     top: 0,
                     left: 0,
-                    child: NCircularIcon(
-                      icon: Iconsax.heart5,
-                      color: Colors.red,
-                    ),
+                    child: NFavouriteIcon(productId: product.id,),
                   ),
                 ],
               ),
@@ -97,7 +95,10 @@ class NProductCardVertical extends StatelessWidget {
                   children: [
                     NProductTitleText(title: product.title, smallSize: true),
                     const SizedBox(height: NSizes.spaceBtwItems / 2),
-                    NBransTitleWithVerifiedIcon(title: product.brand!.name),
+                    NBransTitleWithVerifiedIcon(
+                       // title: product.brand!.name,
+                      title: product.brand?.name ?? 'With no brand name'
+                    ),
                   ],
                 ),
               ),
