@@ -11,6 +11,7 @@ import 'package:ninja_store/features/authentication/screens/login/login.dart';
 import 'package:ninja_store/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:ninja_store/features/authentication/screens/signup.wisgets/verify_email.dart';
 import 'package:ninja_store/navigation_menu.dart';
+import 'package:ninja_store/utils/local_storage/storage_utility.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -32,6 +33,7 @@ class AuthenticationRepository extends GetxController {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
+        await TLocalStorage.init(user.uid);
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));

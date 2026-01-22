@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ninja_store/common/styles/shadows.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/rounded_container.dart';
-import 'package:ninja_store/common/widgets/icons/n_circular_icon.dart';
 import 'package:ninja_store/common/widgets/images/n_rounde_image.dart';
+import 'package:ninja_store/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:ninja_store/common/widgets/texts/n_brand_title_text_with_verified_icon.dart';
 import 'package:ninja_store/common/widgets/texts/product_price.dart';
 import 'package:ninja_store/common/widgets/texts/product_title_text.dart';
@@ -78,10 +78,7 @@ class NProductCardVertical extends StatelessWidget {
                   Positioned(
                     top: 0,
                     left: 0,
-                    child: NCircularIcon(
-                      icon: Iconsax.heart5,
-                      color: Colors.red,
-                    ),
+                    child: NFavouriteIcon(productId: product.id,),
                   ),
                 ],
               ),

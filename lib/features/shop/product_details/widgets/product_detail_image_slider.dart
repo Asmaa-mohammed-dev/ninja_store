@@ -6,6 +6,7 @@ import 'package:ninja_store/common/widgets/custom_shapes/appbar/appbar.dart';
 import 'package:ninja_store/common/widgets/custom_shapes/curved_edges_widget.dart';
 import 'package:ninja_store/common/widgets/icons/n_circular_icon.dart';
 import 'package:ninja_store/common/widgets/images/n_rounde_image.dart';
+import 'package:ninja_store/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:ninja_store/features/shop/controllers/product/images_controller.dart';
 import 'package:ninja_store/features/shop/models/product_model.dart';
 import 'package:ninja_store/utils/constants/colors.dart';
@@ -91,7 +92,7 @@ class NProductImageSlider extends StatelessWidget {
             //Appbar Icons
             NAppBar(
               showBackArrow: true,
-              actions: [NCircularIcon(icon: Iconsax.heart5, color: Colors.red)],
+              actions: [NFavouriteIcon(productId: product.id,)],
             ),
           ],
         ),

@@ -244,7 +244,7 @@ class NDummyData {
       ],
       salePrice: 30,
       sku: 'ABR4568',
-      categoryId: '1',
+      categoryId: '10',
       productAttributes: [
         ProductAttributeModel(name: 'Color', values: ['red', 'black', 'green']),
         ProductAttributeModel(
